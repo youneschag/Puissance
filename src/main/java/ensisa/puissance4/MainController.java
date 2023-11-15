@@ -75,8 +75,8 @@ public class MainController {
         placerJeton(columnIndex);
     }
     public void placerJeton(int columnIndex) {
-        // Remove existing circles in the clicked column
-        supprimerCercles(columnIndex);
+        // Remove existing circles in the clicked column and store them
+        List<Node> cerclesASupprimer = supprimerCercles(columnIndex);
 
         int row = trouverLigneVide(columnIndex);
 
@@ -87,11 +87,15 @@ public class MainController {
             GridPane.setColumnIndex(jeton, columnIndex);
             GridPane.setRowIndex(jeton, row);
             gridPane.getChildren().add(jeton);
+
+            // Ajouter les cercles supprimés à nouveau à la grille, sauf celui situé à la position du jeton
+            cerclesASupprimer.removeIf(node -> GridPane.getColumnIndex(node) == columnIndex && GridPane.getRowIndex(node) == row);
+            gridPane.getChildren().addAll(cerclesASupprimer);
         }
     }
 
-    // Ajoutez cette méthode pour supprimer les cercles existants dans la colonne
-    private void supprimerCercles(int columnIndex) {
+    // Modifiez la méthode supprimerCercles pour renvoyer la liste des cercles supprimés
+    private List<Node> supprimerCercles(int columnIndex) {
         List<Node> cerclesASupprimer = new ArrayList<>();
 
         // Recherchez les cercles existants dans la colonne
@@ -103,7 +107,10 @@ public class MainController {
 
         // Supprimez les cercles de la grille
         gridPane.getChildren().removeAll(cerclesASupprimer);
+
+        return cerclesASupprimer; // Retourne la liste des cercles supprimés
     }
+
 
     private int trouverLigneVide(int columnIndex) {
         for (int row = 6; row >= 1; row--) { // Commencez depuis la ligne 6
