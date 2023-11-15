@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a7a7419-2e5e-4865-9524-9a29bc8098a2" name="Changes" comment="Ajout de jeton mais disparition de la colonne">
+    <list default="true" id="5a7a7419-2e5e-4865-9524-9a29bc8098a2" name="Changes" comment="Ajout de jeton avec son emplacement, et toujours pas de 2 jetons dans la meme colonne">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/MainController.java" afterDir="false" />
     </list>
@@ -167,7 +167,23 @@
       <option name="project" value="LOCAL" />
       <updated>1700043313178</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Ajout de jeton mais modif de son emplacement, et toujours pas de 2 jetons dans la meme colonne">
+      <option name="closed" value="true" />
+      <created>1700044154744</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1700044154744</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Ajout de jeton avec son emplacement, et toujours pas de 2 jetons dans la meme colonne">
+      <option name="closed" value="true" />
+      <created>1700044306544</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1700044306544</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -219,6 +235,8 @@
     <MESSAGE value="Interface un peu plus propre" />
     <MESSAGE value="Ajout de mouse click sur la grille, et ajout de jeton pas encore fonctionnel avec alternance entre les 2 couelurs dans la grille" />
     <MESSAGE value="Ajout de jeton mais disparition de la colonne" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout de jeton mais disparition de la colonne" />
+    <MESSAGE value="Ajout de jeton mais modif de son emplacement, et toujours pas de 2 jetons dans la meme colonne" />
+    <MESSAGE value="Ajout de jeton avec son emplacement, et toujours pas de 2 jetons dans la meme colonne" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout de jeton avec son emplacement, et toujours pas de 2 jetons dans la meme colonne" />
   </component>
 </project>

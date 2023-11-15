@@ -41,11 +41,11 @@ public class MainController {
     }
     @FXML
     private Label labelJoueur1;
-
     @FXML
     private Label labelJoueur2;
     @FXML
     private GridPane gridPane;
+    private Color couleurJetonActuel = Color.YELLOW;
 
     // Méthode pour initialiser les éléments de jeu
     @FXML
@@ -83,13 +83,16 @@ public class MainController {
 
         // Vérifier si la colonne est pleine
         if (row != -1) {
-            // Placer le jeton dans la grille
-            Circle jeton = new Circle(25, Color.YELLOW); // Remplacez Color.YELLOW par la couleur du joueur actif
+            // Placer le jeton dans la grille avec la couleur actuelle
+            Circle jeton = new Circle(25, couleurJetonActuel);
             GridPane.setColumnIndex(jeton, columnIndex);
             GridPane.setRowIndex(jeton, row);
             GridPane.setHalignment(jeton, HPos.CENTER);
             GridPane.setValignment(jeton, VPos.CENTER);
             gridPane.getChildren().add(jeton);
+
+            // Alterner la couleur du jeton pour le prochain joueur
+            couleurJetonActuel = (couleurJetonActuel == Color.YELLOW) ? Color.RED : Color.YELLOW;
 
             // Ajouter les cercles supprimés à nouveau à la grille, sauf celui situé à la position du jeton
             cerclesASupprimer.removeIf(node -> GridPane.getColumnIndex(node) == columnIndex && GridPane.getRowIndex(node) == row);
