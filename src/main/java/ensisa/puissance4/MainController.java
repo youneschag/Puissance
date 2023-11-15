@@ -3,6 +3,7 @@ package ensisa.puissance4;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -12,6 +13,9 @@ import javafx.scene.shape.Circle;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainController {
     @FXML
@@ -71,6 +75,9 @@ public class MainController {
         placerJeton(columnIndex);
     }
     public void placerJeton(int columnIndex) {
+        // Remove existing circles in the clicked column
+        supprimerCercles(columnIndex);
+
         int row = trouverLigneVide(columnIndex);
 
         // Vérifier si la colonne est pleine
@@ -83,8 +90,23 @@ public class MainController {
         }
     }
 
+    // Ajoutez cette méthode pour supprimer les cercles existants dans la colonne
+    private void supprimerCercles(int columnIndex) {
+        List<Node> cerclesASupprimer = new ArrayList<>();
+
+        // Recherchez les cercles existants dans la colonne
+        for (Node node : gridPane.getChildren()) {
+            if (node instanceof Circle && GridPane.getColumnIndex(node) == columnIndex) {
+                cerclesASupprimer.add(node);
+            }
+        }
+
+        // Supprimez les cercles de la grille
+        gridPane.getChildren().removeAll(cerclesASupprimer);
+    }
+
     private int trouverLigneVide(int columnIndex) {
-        for (int row = 6; row >= 0; row--) { // Commencez depuis la dernière ligne
+        for (int row = 6; row >= 1; row--) { // Commencez depuis la ligne 6
             Circle jeton = getJeton(columnIndex, row);
             if (jeton == null) {
                 return row; // La première case vide dans la colonne
@@ -92,7 +114,6 @@ public class MainController {
         }
         return -1; // La colonne est pleine
     }
-
     private Circle getJeton(int columnIndex, int rowIndex) {
         for (Node node : gridPane.getChildren()) {
             if (GridPane.getColumnIndex(node) == columnIndex && GridPane.getRowIndex(node) == rowIndex) {
@@ -101,5 +122,4 @@ public class MainController {
         }
         return null; // Aucun jeton trouvé dans cette case
     }
-
 }

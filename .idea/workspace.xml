@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a7a7419-2e5e-4865-9524-9a29bc8098a2" name="Changes" comment="Interface un peu plus propre">
+    <list default="true" id="5a7a7419-2e5e-4865-9524-9a29bc8098a2" name="Changes" comment="Ajout de mouse click sur la grille, et ajout de jeton pas encore fonctionnel avec alternance entre les 2 couelurs dans la grille">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ensisa/puissance4/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ensisa/puissance4/main-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +151,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700006584523</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Ajout de mouse click sur la grille, et ajout de jeton pas encore fonctionnel avec alternance entre les 2 couelurs dans la grille">
+      <option name="closed" value="true" />
+      <created>1700036141392</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1700036141392</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -202,6 +209,7 @@
     <MESSAGE value="Final commit on 17:54" />
     <MESSAGE value="Début interface avec fonctionnement bouton exit, et non fonctionnement bouton new game." />
     <MESSAGE value="Interface un peu plus propre" />
-    <option name="LAST_COMMIT_MESSAGE" value="Interface un peu plus propre" />
+    <MESSAGE value="Ajout de mouse click sur la grille, et ajout de jeton pas encore fonctionnel avec alternance entre les 2 couelurs dans la grille" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout de mouse click sur la grille, et ajout de jeton pas encore fonctionnel avec alternance entre les 2 couelurs dans la grille" />
   </component>
 </project>
