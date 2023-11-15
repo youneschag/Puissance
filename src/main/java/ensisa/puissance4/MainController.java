@@ -3,6 +3,7 @@ package ensisa.puissance4;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -86,6 +87,8 @@ public class MainController {
             Circle jeton = new Circle(25, Color.YELLOW); // Remplacez Color.YELLOW par la couleur du joueur actif
             GridPane.setColumnIndex(jeton, columnIndex);
             GridPane.setRowIndex(jeton, row);
+            GridPane.setHalignment(jeton, HPos.CENTER);
+            GridPane.setValignment(jeton, VPos.CENTER);
             gridPane.getChildren().add(jeton);
 
             // Ajouter les cercles supprimés à nouveau à la grille, sauf celui situé à la position du jeton
