@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a7a7419-2e5e-4865-9524-9a29bc8098a2" name="Changes" comment="Début interface avec fonctionnement bouton exit, et non fonctionnement bouton new game.">
+    <list default="true" id="5a7a7419-2e5e-4865-9524-9a29bc8098a2" name="Changes" comment="Interface un peu plus propre">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/PuissanceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/PuissanceApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/ensisa/puissance4/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ensisa/puissance4/main-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,6 +28,13 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="main" />
+      </list>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -138,7 +144,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699998088246</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Interface un peu plus propre">
+      <option name="closed" value="true" />
+      <created>1700006584523</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1700006584523</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,6 +201,7 @@
     <MESSAGE value="message essai" />
     <MESSAGE value="Final commit on 17:54" />
     <MESSAGE value="Début interface avec fonctionnement bouton exit, et non fonctionnement bouton new game." />
-    <option name="LAST_COMMIT_MESSAGE" value="Début interface avec fonctionnement bouton exit, et non fonctionnement bouton new game." />
+    <MESSAGE value="Interface un peu plus propre" />
+    <option name="LAST_COMMIT_MESSAGE" value="Interface un peu plus propre" />
   </component>
 </project>
