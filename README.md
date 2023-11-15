@@ -17,3 +17,8 @@ Mettre en bas de la grille, un historique des mouvements effectués par chaque j
 Rajouter un compteur de la durée de la partie (voir si même on peut limiter le temps d'une partie et si y a aucun vainqueur d'ici la fin de la durée choisie, draw.
 
 
+
+Il faut que les 4 éléments dans toolbar change de position si je redimensionne la fenêtre.
+
+
+
