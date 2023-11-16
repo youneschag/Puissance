@@ -23,3 +23,6 @@ Il faut que les 4 éléments dans toolbar change de position si je redimensionne
 
 
 Mettre un pop up qui explique les règles et le jeu et guide d'utilisation et les différentes fonctions.
+
+
+Ajouter bouton Aide dans la toolbar qui va faire apparaitre le guide d'utilisation(premierement affiche des l'execution de l'appli) avec des textfield, pour expliquer le jeu, les regles, comment ajouter les jetons, quand finir la partie, ou chosiir quelle partie souhaitée, et voir l'historique des matches?
