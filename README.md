@@ -22,3 +22,4 @@ Il faut que les 4 éléments dans toolbar change de position si je redimensionne
 
 
 
+Mettre un pop up qui explique les règles et le jeu et guide d'utilisation et les différentes fonctions.
