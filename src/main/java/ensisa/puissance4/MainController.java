@@ -7,6 +7,7 @@ import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -24,6 +25,10 @@ public class MainController {
         Platform.exit();
         System.exit(0);
     }
+    private boolean premierClic = true;
+    @FXML
+    private TextField textField;
+
     @FXML
     private Label labelJoueur1;
     @FXML
@@ -52,13 +57,20 @@ public class MainController {
         int seconds = secondsElapsed % 60;
         durationLabel.setText(String.format("Durée: %02d:%02d", minutes, seconds));
     }
+
     @FXML
     private void handleColumnClick(MouseEvent event) {
+        if (premierClic) {
+            textField.setText("C'est le tour du Joueur 1/2");
+            premierClic = false;
+        }
+
         Circle clickedCircle = (Circle) event.getSource();
         int columnIndex = GridPane.getColumnIndex(clickedCircle);
         // Logique pour placer le jeton dans la colonne columnIndex
         placerJeton(columnIndex);
     }
+
     public void placerJeton(int columnIndex) {
         // Remove existing cercles in the clicked column and store them
         List<Node> cerclesASupprimer = supprimerCercles(columnIndex);
@@ -77,6 +89,9 @@ public class MainController {
 
             // Alterner la couleur du jeton pour le prochain joueur
             couleurJetonActuel = (couleurJetonActuel == Color.YELLOW) ? Color.RED : Color.YELLOW;
+
+            // Mettre à jour le texte en fonction du joueur actuel
+            textField.setText("C'est le tour du Joueur " + (couleurJetonActuel == Color.YELLOW ? "1" : "2"));
 
             // Ajouter les cercles supprimés à nouveau à la grille, sauf celui situé à la position du jeton
             cerclesASupprimer.removeIf(node -> GridPane.getColumnIndex(node) == columnIndex && GridPane.getRowIndex(node) == row);

@@ -30,7 +30,7 @@
                             <MenuItem mnemonicParsing="false" text="Human vs Computer" />
                         </items>
                     </MenuButton>
-                    <TextField editable="false" text="Que la partie commence !" />
+                    <TextField fx:id="textField" editable="false" text="Que la partie commence !" />
                     <Region HBox.hgrow="ALWAYS" />
                     <Label fx:id="durationLabel" text="Durée: 00:00" textAlignment="CENTER">
                         <font>
