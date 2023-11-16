@@ -25,21 +25,6 @@ public class MainController {
         System.exit(0);
     }
     @FXML
-    private Circle jetonJoueur1;
-
-    @FXML
-    private Circle jetonJoueur2;
-
-    // Méthode pour placer le jeton du joueur 1
-    public void placerJetonJoueur1() {
-        // Logique pour placer le jeton du joueur 1
-    }
-
-    // Méthode pour placer le jeton du joueur 2
-    public void placerJetonJoueur2() {
-        // Logique pour placer le jeton du joueur 2
-    }
-    @FXML
     private Label labelJoueur1;
     @FXML
     private Label labelJoueur2;
@@ -71,12 +56,11 @@ public class MainController {
     private void handleColumnClick(MouseEvent event) {
         Circle clickedCircle = (Circle) event.getSource();
         int columnIndex = GridPane.getColumnIndex(clickedCircle);
-
         // Logique pour placer le jeton dans la colonne columnIndex
         placerJeton(columnIndex);
     }
     public void placerJeton(int columnIndex) {
-        // Remove existing circles in the clicked column and store them
+        // Remove existing cercles in the clicked column and store them
         List<Node> cerclesASupprimer = supprimerCercles(columnIndex);
 
         int row = trouverLigneVide(columnIndex);
@@ -84,7 +68,7 @@ public class MainController {
         // Vérifier si la colonne est pleine
         if (row != -1) {
             // Placer le jeton dans la grille avec la couleur actuelle
-            Circle jeton = new Circle(25, couleurJetonActuel);
+            Jeton jeton = new Jeton(25, couleurJetonActuel);
             GridPane.setColumnIndex(jeton, columnIndex);
             GridPane.setRowIndex(jeton, row);
             GridPane.setHalignment(jeton, HPos.CENTER);
@@ -100,13 +84,12 @@ public class MainController {
         }
     }
 
-    // Modifiez la méthode supprimerCercles pour renvoyer la liste des cercles supprimés
+    // Modifiez la méthode supprimerCercles pour supprimer les instances de Cercle
     private List<Node> supprimerCercles(int columnIndex) {
         List<Node> cerclesASupprimer = new ArrayList<>();
-
         // Recherchez les cercles existants dans la colonne
         for (Node node : gridPane.getChildren()) {
-            if (node instanceof Circle && GridPane.getColumnIndex(node) == columnIndex) {
+            if (node instanceof Cercle && GridPane.getColumnIndex(node) == columnIndex) {
                 cerclesASupprimer.add(node);
             }
         }
@@ -117,20 +100,27 @@ public class MainController {
         return cerclesASupprimer; // Retourne la liste des cercles supprimés
     }
 
-
     private int trouverLigneVide(int columnIndex) {
         for (int row = 6; row >= 1; row--) { // Commencez depuis la ligne 6
-            Circle jeton = getJeton(columnIndex, row);
+            Jeton jeton = (Jeton) getJeton(columnIndex, row);
             if (jeton == null) {
-                return row; // La première case vide dans la colonne
+                return row;
             }
         }
         return -1; // La colonne est pleine
     }
-    private Circle getJeton(int columnIndex, int rowIndex) {
+    private Node getJeton(int columnIndex, int rowIndex) {
         for (Node node : gridPane.getChildren()) {
-            if (GridPane.getColumnIndex(node) == columnIndex && GridPane.getRowIndex(node) == rowIndex) {
-                return (Circle) node;
+            Integer nodeColumnIndex = GridPane.getColumnIndex(node);
+            Integer nodeRowIndex = GridPane.getRowIndex(node);
+
+            // Vérifier si les indices de colonne et de ligne sont non nuls et correspondent
+            if (nodeColumnIndex != null && nodeRowIndex != null
+                    && nodeColumnIndex == columnIndex && nodeRowIndex == rowIndex) {
+                // Assurez-vous que le nœud est du type attendu (peut être un Circle ou un autre type de jeton)
+                if (node instanceof Cercle || node instanceof Jeton) {
+                    return node;
+                }
             }
         }
         return null; // Aucun jeton trouvé dans cette case
