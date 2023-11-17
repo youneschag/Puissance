@@ -28,3 +28,8 @@ Ajouter bouton Aide dans la toolbar qui va faire apparaitre le guide d'utilisati
 
 Rajouter un pop up pour confirmer vouloir quitter le jeu quand je clique sur le bouton Quitter.
 
+
+
+Rajouter un bouton revenir dans les pop up pour changer les propriétés de la game
+
+
