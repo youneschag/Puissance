@@ -38,6 +38,11 @@
                         </font>
                     </Label>
                     <Region HBox.hgrow="ALWAYS" />
+                    <Button fx:id="helpButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" onAction="#handleHelpButtonAction" text="Aide?">
+                        <font>
+                            <Font name="Arial" size="13.0" />
+                        </font>
+                    </Button>
                     <Button fx:id="exitButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" onAction="#handleExitButtonAction" text="Quitter">
                         <font>
                             <Font name="Arial" size="13.0" />

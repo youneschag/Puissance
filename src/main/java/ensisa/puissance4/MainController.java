@@ -422,4 +422,9 @@ public class MainController {
     public void mettreAJourTypePartie(String typePartie) {
         gameTypeTextField.setText(typePartie);
     }
+    @FXML
+    private void handleHelpButtonAction(ActionEvent event) {
+        // Afficher les règles
+        ReglesDuJeuPopUp.afficherRegles();
+    }
 }

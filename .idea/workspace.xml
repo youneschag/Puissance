@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a7a7419-2e5e-4865-9524-9a29bc8098a2" name="Changes" comment="Alignement centrale du type de game">
-      <change beforePath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/MainController.java" afterDir="false" />
-    </list>
+    <list default="true" id="5a7a7419-2e5e-4865-9524-9a29bc8098a2" name="Changes" comment="Ajout de pop up de confirmation avant de quitter" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -287,7 +285,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700251147724</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Ajout de pop up de confirmation avant de quitter">
+      <option name="closed" value="true" />
+      <created>1700251609566</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1700251609566</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -353,6 +359,7 @@
     <MESSAGE value="Alternance complète réussie entre les joueurs dans la grille et textfield" />
     <MESSAGE value="Un peu plus d'interface" />
     <MESSAGE value="Alignement centrale du type de game" />
-    <option name="LAST_COMMIT_MESSAGE" value="Alignement centrale du type de game" />
+    <MESSAGE value="Ajout de pop up de confirmation avant de quitter" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout de pop up de confirmation avant de quitter" />
   </component>
 </project>
