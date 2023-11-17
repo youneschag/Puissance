@@ -28,3 +28,17 @@ Ajouter bouton Aide dans la toolbar qui va faire apparaitre le guide d'utilisati
 
 Rajouter un pop up pour confirmer vouloir quitter le jeu quand je clique sur le bouton Quitter.
 
+
+Bonus: Faire un pop up de souhait ou non pour modification des données de la partie quand on est déja dans une partie h vs h et quand va etre dnas une nouvelle partie h vs h
+
+
+
+
+Rajouter un bouton revenir dans les pop up pour changer les propriétés de la game
+
+
+
+Bonus: Revoir la logique entre l'ordre et l'emplacement du joueur sous quel jeton, et qui va commencer (problème mineur mais conséquent dans la manière de jouer). Par exemple, si on est deuxième et rouge, le joueur est bien rouge mais commence premier, à revoir dans tout les cas (partie initial et dans les new games).
+
+
+
