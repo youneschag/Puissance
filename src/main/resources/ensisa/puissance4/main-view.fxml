@@ -71,13 +71,13 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <Region style="-fx-background-color: lightgrey;" GridPane.columnIndex="1" GridPane.columnSpan="7" GridPane.rowIndex="1" GridPane.rowSpan="6" />
-            <Label text="Joueur 1" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+            <Label fx:id="usernameLabelJoueur1" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
                 <font>
                     <Font name="Arial" size="13.0" />
                 </font>
             </Label>
-            <TextField fx:id="gameTypeTextField" editable="false" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <Label text="Joueur 2" GridPane.columnIndex="8" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+            <TextField fx:id="gameTypeTextField" editable="false" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER"  />
+            <Label fx:id="usernameLabelJoueur2" GridPane.columnIndex="8" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
                 <font>
                     <Font name="Arial" size="13.0" />
                 </font>

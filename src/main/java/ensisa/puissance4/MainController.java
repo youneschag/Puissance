@@ -30,22 +30,64 @@ public class MainController {
     private TextField textField;
     @FXML
     private TextField gameTypeTextField;
+    @FXML
+    private Label usernameLabelJoueur1;
+    @FXML
+    private Label usernameLabelJoueur2;
+    private String selectedGameMode; // Choix du mode de jeu
+    private Color selectedTokenColor; // Choix de la couleur du jeton
     private Timeline timeline;
     private boolean demarrerTemps = false;
     @FXML
     private GridPane gridPane;
-    private Color couleurJetonActuel = Color.YELLOW;
 
     // Méthode pour initialiser les éléments de jeu
     @FXML
     public void initialiserJeu() {
+        // Afficher les règles
         ReglesDuJeuPopUp.afficherRegles();
+
+        // Obtenir les informations de l'utilisateur
+        UserInfo userInfo = UserInfoPopUp.obtenirInfosUtilisateur();
+
+        // Utilisez les informations de l'utilisateur comme nécessaire
+        System.out.println("Nom d'utilisateur : " + userInfo.getUsername());
+        System.out.println("Jeton choisi : " + userInfo.getSelectedToken());
+        System.out.println("Mode de jeu choisi : " + userInfo.getSelectedGameMode());
+
+        // Mettre à jour le texte et la couleur du jeton en fonction des informations du joueur
+        mettreAJourTypePartie(userInfo.getSelectedGameMode());
+        selectedGameMode = userInfo.getSelectedGameMode();
+
+        // Afficher le premier joueur dans le texte
+        textField.setText("C'est le tour du Joueur " + (selectedTokenColor == Color.YELLOW ? "1" : "2"));
+
+        // Mise à jour du label avec le nom d'utilisateur en fonction du choix du jeton et de l'ordre
+        if ("Human vs Computer".equals(selectedGameMode)) {
+            if ("YELLOW".equals(userInfo.getSelectedToken())) {
+                usernameLabelJoueur1.setText(userInfo.getUsername());
+                usernameLabelJoueur2.setText("Computer");
+            } else {
+                usernameLabelJoueur1.setText("Computer");
+                usernameLabelJoueur2.setText(userInfo.getUsername());
+            }
+        };
+        if ("Human vs Human".equals(selectedGameMode)) {
+            if ("YELLOW".equals(userInfo.getSelectedToken())) {
+                usernameLabelJoueur1.setText(userInfo.getUsername());
+                usernameLabelJoueur2.setText(userInfo.getSecondusername());
+            } else {
+                usernameLabelJoueur1.setText(userInfo.getSecondusername());
+                usernameLabelJoueur2.setText(userInfo.getUsername());
+            }
+        };
         if (timeline != null) {
             timeline.stop(); // Arrêter la timeline si elle est en cours
         }
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), this::updateDuration));
         timeline.setCycleCount(Timeline.INDEFINITE);
     }
+
 
     @FXML
     private Label durationLabel;
@@ -88,7 +130,7 @@ public class MainController {
         // Vérifier si la colonne est pleine
         if (row != -1) {
             // Placer le jeton dans la grille avec la couleur actuelle
-            Jeton jeton = new Jeton(25, couleurJetonActuel);
+            Jeton jeton = new Jeton(25, selectedTokenColor);
             GridPane.setColumnIndex(jeton, columnIndex);
             GridPane.setRowIndex(jeton, row);
             GridPane.setHalignment(jeton, HPos.CENTER);
@@ -96,10 +138,10 @@ public class MainController {
             gridPane.getChildren().add(jeton);
 
             // Alterner la couleur du jeton pour le prochain joueur
-            couleurJetonActuel = (couleurJetonActuel == Color.YELLOW) ? Color.RED : Color.YELLOW;
+            selectedTokenColor = (selectedTokenColor == Color.YELLOW) ? Color.RED : Color.YELLOW;
 
             // Mettre à jour le texte en fonction du joueur actuel
-            textField.setText("C'est le tour du Joueur " + (couleurJetonActuel == Color.YELLOW ? "1" : "2"));
+            textField.setText("C'est le tour du Joueur " + (selectedTokenColor == Color.YELLOW ? "1" : "2"));
 
             // Démarrer ou arrêter la timeline en fonction de demarrerTemps
             if (demarrerTemps) {
@@ -211,5 +253,7 @@ public class MainController {
             timeline.stop();
         }
     }
-
+    public void mettreAJourTypePartie(String typePartie) {
+        gameTypeTextField.setText(typePartie);
+    }
 }
