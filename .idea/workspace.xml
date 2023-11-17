@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a7a7419-2e5e-4865-9524-9a29bc8098a2" name="Changes" comment="Ajout bouton Aide">
-      <change beforePath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/PuissanceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/PuissanceApplication.java" afterDir="false" />
+    <list default="true" id="5a7a7419-2e5e-4865-9524-9a29bc8098a2" name="Changes" comment="Ajustement">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/dark-theme.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/light-theme.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/ensisa/puissance4/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ensisa/puissance4/main-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -18,6 +21,7 @@
       <list>
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -55,21 +59,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;maria&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/aitbo/OneDrive/Documents/Projet_IA_IHM/Puissance&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "maria",
+    "last_opened_file_path": "C:/Users/aitbo/OneDrive/Documents/Projet_IA_IHM/Puissance",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="Puissance" />
@@ -304,7 +309,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700252022761</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Ajustement">
+      <option name="closed" value="true" />
+      <created>1700252145488</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1700252145488</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -372,6 +385,7 @@
     <MESSAGE value="Alignement centrale du type de game" />
     <MESSAGE value="Ajout de pop up de confirmation avant de quitter" />
     <MESSAGE value="Ajout bouton Aide" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout bouton Aide" />
+    <MESSAGE value="Ajustement" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajustement" />
   </component>
 </project>

@@ -1,0 +1,6 @@
+/* light-theme.css */
+.root {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #000000;
+    /* Ajoutez d'autres règles CSS claires selon vos besoins */
+}

@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -62,6 +63,8 @@ public class MainController {
     private boolean demarrerTemps = false;
     @FXML
     private GridPane gridPane;
+    @FXML
+    private ToggleButton themeSwitchButton;
 
     // Méthode pour initialiser les éléments de jeu
     @FXML
@@ -426,5 +429,18 @@ public class MainController {
     private void handleHelpButtonAction(ActionEvent event) {
         // Afficher les règles
         ReglesDuJeuPopUp.afficherRegles();
+    }
+    @FXML
+    private void handleThemeSwitch(ActionEvent event) {
+        Scene scene = ((Node) event.getSource()).getScene();
+        if (themeSwitchButton.isSelected()) {
+            // Charger une feuille de style CSS sombre
+            scene.getStylesheets().add(getClass().getResource("/dark-theme.css").toExternalForm());
+            themeSwitchButton.setText("Theme clair");
+        } else {
+            // Charger une feuille de style CSS claire
+            scene.getStylesheets().remove(getClass().getResource("/dark-theme.css").toExternalForm());
+            themeSwitchButton.setText("Theme sombre");
+        }
     }
 }
