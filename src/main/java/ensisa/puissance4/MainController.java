@@ -39,6 +39,7 @@ public class MainController {
     // Méthode pour initialiser les éléments de jeu
     @FXML
     public void initialiserJeu() {
+        ReglesDuJeuPopUp.afficherRegles();
         if (timeline != null) {
             timeline.stop(); // Arrêter la timeline si elle est en cours
         }

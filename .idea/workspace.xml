@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a7a7419-2e5e-4865-9524-9a29bc8098a2" name="Changes" comment="Le temps se rénitialise lorqu'on met une nouvelle partie">
+    <list default="true" id="5a7a7419-2e5e-4865-9524-9a29bc8098a2" name="Changes" comment="Affichage du type de jeu ( h vs h or h vs c), dans le textfield au centre de la partie">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/ReglesDuJeuPopUp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ensisa/puissance4/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ensisa/puissance4/main-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -233,7 +233,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700214509912</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Affichage du type de jeu ( h vs h or h vs c), dans le textfield au centre de la partie">
+      <option name="closed" value="true" />
+      <created>1700215244223</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1700215244223</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -292,6 +300,7 @@
     <MESSAGE value="Changement du textfield &quot;Que la partie commence&quot; en &quot;c'est le tour du joueur 1/2&quot; en fonction de qui va jouer" />
     <MESSAGE value="Démarrage du temps quand je mets le premier jeton" />
     <MESSAGE value="Le temps se rénitialise lorqu'on met une nouvelle partie" />
-    <option name="LAST_COMMIT_MESSAGE" value="Le temps se rénitialise lorqu'on met une nouvelle partie" />
+    <MESSAGE value="Affichage du type de jeu ( h vs h or h vs c), dans le textfield au centre de la partie" />
+    <option name="LAST_COMMIT_MESSAGE" value="Affichage du type de jeu ( h vs h or h vs c), dans le textfield au centre de la partie" />
   </component>
 </project>
