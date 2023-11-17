@@ -6,16 +6,15 @@ import javafx.fxml.FXML;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
-import javafx.scene.control.ChoiceDialog;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
@@ -25,8 +24,25 @@ import java.util.Optional;
 public class MainController {
     @FXML
     private void handleExitButtonAction(ActionEvent event) {
-        Platform.exit();
-        System.exit(0);
+        Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmationAlert.setTitle("Confirmation");
+        confirmationAlert.setHeaderText(null);
+        confirmationAlert.setContentText("Voulez-vous vraiment quitter l'application?");
+
+        // Ajouter les boutons "Oui" et "Annuler"
+        confirmationAlert.getButtonTypes().setAll(ButtonType.YES, ButtonType.CANCEL);
+
+        // Afficher la boîte de dialogue et attendre la réponse de l'utilisateur
+        Stage stage = (Stage) confirmationAlert.getDialogPane().getScene().getWindow();
+        Optional<ButtonType> result = confirmationAlert.showAndWait();
+
+        // Vérifier la réponse de l'utilisateur
+        if (result.isPresent() && result.get() == ButtonType.YES) {
+            // Si l'utilisateur a cliqué sur "Oui", quitter l'application
+            Platform.exit();
+            System.exit(0);
+        }
+        // Sinon, l'utilisateur a annulé l'action, rien ne se passe
     }
     private boolean premierClic = true;
     @FXML
@@ -55,11 +71,6 @@ public class MainController {
 
         // Obtenir les informations de l'utilisateur
         UserInfo userInfo = UserInfoPopUp.obtenirInfosUtilisateur();
-
-        // Utilisez les informations de l'utilisateur comme nécessaire
-        System.out.println("Nom d'utilisateur : " + userInfo.getUsername());
-        System.out.println("Jeton choisi : " + userInfo.getSelectedToken());
-        System.out.println("Mode de jeu choisi : " + userInfo.getSelectedGameMode());
 
         // Mettre à jour le texte et la couleur du jeton en fonction des informations du joueur
         mettreAJourTypePartie(userInfo.getSelectedGameMode());
