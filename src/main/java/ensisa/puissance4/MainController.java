@@ -28,6 +28,8 @@ public class MainController {
     private boolean premierClic = true;
     @FXML
     private TextField textField;
+    @FXML
+    private TextField gameTypeTextField;
     private Timeline timeline;
     private boolean demarrerTemps = false;
     @FXML
@@ -183,16 +185,17 @@ public class MainController {
     @FXML
     private void handleHumanVsHuman(ActionEvent event) {
         reinitialiserJeu(); // Appel de la méthode de réinitialisation sans démarrer le temps
+        gameTypeTextField.setText("Human vs Human");
         // Ajoutez ici la logique pour le mode Human vs Human
     }
 
     @FXML
     private void handleHumanVsComputer(ActionEvent event) {
         reinitialiserJeu(); // Appel de la méthode de réinitialisation sans démarrer le temps
+        gameTypeTextField.setText("Human vs Computer");
         // Ajoutez ici la logique pour le mode Human vs Computer
     }
 
-    // Méthode pour réinitialiser l'ensemble du jeu
     // Méthode pour réinitialiser l'ensemble du jeu
     public void reinitialiserJeu() {
         reinitialiserGrille();
