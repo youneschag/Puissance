@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a7a7419-2e5e-4865-9524-9a29bc8098a2" name="Changes" comment="Ajout ordre et alternance des couleurs, il manque juste que le textfield change en gardant les noms des utilisateurs, et que lors de la rénitialistion, l'ordre des utilisateurs ne disparait pas" />
+    <list default="true" id="5a7a7419-2e5e-4865-9524-9a29bc8098a2" name="Changes" comment="Alternance complète réussie entre les joueurs dans la grille et textfield">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/MainController.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -261,7 +264,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700236486290</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Alternance complète réussie entre les joueurs dans la grille et textfield">
+      <option name="closed" value="true" />
+      <created>1700236939063</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1700236939063</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -324,6 +335,7 @@
     <MESSAGE value="Ajout pop up lors du démarrage de l'appli, poiur expliquer les règles du jeu" />
     <MESSAGE value="AJout des pop up pour definir les joueurs, le type de jeu, et la couleur du jeton" />
     <MESSAGE value="Ajout ordre et alternance des couleurs, il manque juste que le textfield change en gardant les noms des utilisateurs, et que lors de la rénitialistion, l'ordre des utilisateurs ne disparait pas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout ordre et alternance des couleurs, il manque juste que le textfield change en gardant les noms des utilisateurs, et que lors de la rénitialistion, l'ordre des utilisateurs ne disparait pas" />
+    <MESSAGE value="Alternance complète réussie entre les joueurs dans la grille et textfield" />
+    <option name="LAST_COMMIT_MESSAGE" value="Alternance complète réussie entre les joueurs dans la grille et textfield" />
   </component>
 </project>

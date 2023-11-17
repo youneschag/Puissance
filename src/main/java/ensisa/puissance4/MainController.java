@@ -6,8 +6,10 @@ import javafx.fxml.FXML;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
+import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -18,6 +20,7 @@ import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class MainController {
     @FXML
@@ -249,16 +252,146 @@ public class MainController {
 
     @FXML
     private void handleHumanVsHuman(ActionEvent event) {
-        reinitialiserJeu(); // Appel de la méthode de réinitialisation sans démarrer le temps
-        gameTypeTextField.setText("Human vs Human");
-        // Ajoutez ici la logique pour le mode Human vs Human
+        reinitialiserJeu();
+        // Vérifier si le type de jeu a changé
+        if (!"Human vs Human".equals(gameTypeTextField.getText())) {
+            // Si le type de jeu a changé, demander les informations à l'utilisateur
+            TextInputDialog firstUsernameDialog = new TextInputDialog();
+            firstUsernameDialog.setTitle("Nom d'utilisateur");
+            firstUsernameDialog.setHeaderText(null);
+            firstUsernameDialog.setContentText("Entrez votre nom d'utilisateur :");
+            Optional<String> firstUsernameResult = firstUsernameDialog.showAndWait();
+
+            TextInputDialog secondUsernameDialog = new TextInputDialog();
+            secondUsernameDialog.setTitle("Nom d'utilisateur du deuxième joueur ");
+            secondUsernameDialog.setHeaderText(null);
+            secondUsernameDialog.setContentText("Entrez le nom d'utilisateur du deuxième joueur :");
+            Optional<String> secondUsernameResult = secondUsernameDialog.showAndWait();
+
+            ChoiceDialog<String> ordreDialog = new ChoiceDialog<>("Premier", "Premier", "Deuxième");
+            ordreDialog.setTitle("Ordre de jeu");
+            ordreDialog.setHeaderText(null);
+            ordreDialog.setContentText("Choisissez l'ordre de jeu :");
+            Optional<String> ordreResult = ordreDialog.showAndWait();
+
+            List<String> colorNames = List.of("YELLOW", "RED");
+            ChoiceDialog<String> couleurDialog = new ChoiceDialog<>(colorNames.get(0), colorNames);
+            couleurDialog.setTitle("Couleur du jeton");
+            couleurDialog.setHeaderText(null);
+            couleurDialog.setContentText("Choisissez la couleur de votre jeton :");
+            Optional<String> colorNameResult = couleurDialog.showAndWait();
+            Optional<Color> couleurResult = colorNameResult.map(colorName -> {
+                return switch (colorName) {
+                    case "YELLOW" -> Color.YELLOW;
+                    case "RED" -> Color.RED;
+                    // Add more color cases if needed
+                    default -> null; // Handle the case when an invalid color is selected
+                };
+            });
+
+            // Si l'utilisateur a saisi des informations, mettez à jour le jeu
+            if (firstUsernameResult.isPresent() && couleurResult.isPresent() && ordreResult.isPresent() && secondUsernameResult.isPresent()) {
+                // Mettez à jour le texte et la couleur du jeton en fonction des informations du joueur
+                mettreAJourTypePartie("Human vs Computer");
+                selectedGameMode = "Human vs Computer";
+                selectedOrdre = ordreResult.get();
+                selectedTokenColor = couleurResult.get();
+
+                // Mettez à jour les labels avec le nom d'utilisateur en fonction du choix du jeton et de l'ordre
+                if (Color.YELLOW.equals(selectedTokenColor)) {
+                    nomJoueur1 = firstUsernameResult.get();
+                    nomJoueur2 = secondUsernameResult.get();
+                } else {
+                    nomJoueur1 = secondUsernameResult.get();
+                    nomJoueur2 = firstUsernameResult.get();
+                }
+
+                usernameLabelJoueur1.setText(nomJoueur1);
+                usernameLabelJoueur2.setText(nomJoueur2);
+
+                // Afficher le premier joueur dans le texte en fonction de l'ordre choisi
+                if ("Premier".equals(selectedOrdre) && Color.YELLOW.equals(selectedTokenColor)){
+                    textField.setText("C'est le tour de " + nomJoueur1);
+                } else if ("Premier".equals(selectedOrdre) && Color.RED.equals(selectedTokenColor)){
+                    textField.setText("C'est le tour de " + nomJoueur2);
+                } else if ("Deuxième".equals(selectedOrdre) && Color.YELLOW.equals(selectedTokenColor)) {
+                    textField.setText("C'est le tour de " + nomJoueur2);
+                } else if ("Deuxième".equals(selectedOrdre) && Color.RED.equals(selectedTokenColor)) {
+                    textField.setText("C'est le tour de " + nomJoueur1);
+                }
+                // Réinitialiser le jeu sans démarrer le temps
+                reinitialiserJeu();
+            }
+        }
     }
 
     @FXML
     private void handleHumanVsComputer(ActionEvent event) {
-        reinitialiserJeu(); // Appel de la méthode de réinitialisation sans démarrer le temps
-        gameTypeTextField.setText("Human vs Computer");
-        // Ajoutez ici la logique pour le mode Human vs Computer
+        reinitialiserJeu();
+        // Vérifier si le type de jeu a changé
+        if (!"Human vs Computer".equals(gameTypeTextField.getText())) {
+            // Si le type de jeu a changé, demander les informations à l'utilisateur
+            TextInputDialog firstUsernameDialog = new TextInputDialog();
+            firstUsernameDialog.setTitle("Nom d'utilisateur");
+            firstUsernameDialog.setHeaderText(null);
+            firstUsernameDialog.setContentText("Entrez votre nom d'utilisateur :");
+            Optional<String> firstUsernameResult = firstUsernameDialog.showAndWait();
+
+            ChoiceDialog<String> ordreDialog = new ChoiceDialog<>("Premier", "Premier", "Deuxième");
+            ordreDialog.setTitle("Ordre de jeu");
+            ordreDialog.setHeaderText(null);
+            ordreDialog.setContentText("Choisissez l'ordre de jeu :");
+            Optional<String> ordreResult = ordreDialog.showAndWait();
+
+            List<String> colorNames = List.of("YELLOW", "RED");
+            ChoiceDialog<String> couleurDialog = new ChoiceDialog<>(colorNames.get(0), colorNames);
+            couleurDialog.setTitle("Couleur du jeton");
+            couleurDialog.setHeaderText(null);
+            couleurDialog.setContentText("Choisissez la couleur de votre jeton :");
+            Optional<String> colorNameResult = couleurDialog.showAndWait();
+            Optional<Color> couleurResult = colorNameResult.map(colorName -> {
+                return switch (colorName) {
+                    case "YELLOW" -> Color.YELLOW;
+                    case "RED" -> Color.RED;
+                    // Add more color cases if needed
+                    default -> null; // Handle the case when an invalid color is selected
+                };
+            });
+
+            // Si l'utilisateur a saisi des informations, mettez à jour le jeu
+            if (firstUsernameResult.isPresent() && couleurResult.isPresent() && ordreResult.isPresent()) {
+                // Mettez à jour le texte et la couleur du jeton en fonction des informations du joueur
+                mettreAJourTypePartie("Human vs Computer");
+                selectedGameMode = "Human vs Computer";
+                selectedOrdre = ordreResult.get();
+                selectedTokenColor = couleurResult.get();
+
+                // Mettez à jour les labels avec le nom d'utilisateur en fonction du choix du jeton et de l'ordre
+                if (Color.YELLOW.equals(selectedTokenColor)) {
+                    nomJoueur1 = firstUsernameResult.get();
+                    nomJoueur2 = "Computer";
+                } else {
+                    nomJoueur1 = "Computer";
+                    nomJoueur2 = firstUsernameResult.get();
+                }
+
+                usernameLabelJoueur1.setText(nomJoueur1);
+                usernameLabelJoueur2.setText(nomJoueur2);
+
+                // Afficher le premier joueur dans le texte en fonction de l'ordre choisi
+                if ("Premier".equals(selectedOrdre) && Color.YELLOW.equals(selectedTokenColor)){
+                    textField.setText("C'est le tour de " + nomJoueur1);
+                } else if ("Premier".equals(selectedOrdre) && Color.RED.equals(selectedTokenColor)){
+                    textField.setText("C'est le tour de " + nomJoueur2);
+                } else if ("Deuxième".equals(selectedOrdre) && Color.YELLOW.equals(selectedTokenColor)) {
+                    textField.setText("C'est le tour de " + nomJoueur2);
+                } else if ("Deuxième".equals(selectedOrdre) && Color.RED.equals(selectedTokenColor)) {
+                    textField.setText("C'est le tour de " + nomJoueur1);
+                }
+                // Réinitialiser le jeu sans démarrer le temps
+                reinitialiserJeu();
+            }
+        }
     }
 
     // Méthode pour réinitialiser l'ensemble du jeu
