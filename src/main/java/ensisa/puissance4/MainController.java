@@ -28,11 +28,8 @@ public class MainController {
     private boolean premierClic = true;
     @FXML
     private TextField textField;
-
-    @FXML
-    private Label labelJoueur1;
-    @FXML
-    private Label labelJoueur2;
+    private Timeline timeline;
+    private boolean demarrerTemps = false;
     @FXML
     private GridPane gridPane;
     private Color couleurJetonActuel = Color.YELLOW;
@@ -40,12 +37,10 @@ public class MainController {
     // Méthode pour initialiser les éléments de jeu
     @FXML
     public void initialiserJeu() {
-        labelJoueur1.setText("Joueur 1 :");
-        labelJoueur2.setText("Joueur 2 :");
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), this::updateDuration));
+        timeline = new Timeline(new KeyFrame(Duration.seconds(1), this::updateDuration));
         timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
     }
+
     @FXML
     private Label durationLabel;
     private int secondsElapsed = 0;
@@ -63,6 +58,7 @@ public class MainController {
         if (premierClic) {
             textField.setText("C'est le tour du Joueur 1/2");
             premierClic = false;
+            demarrerTemps = true; // Démarrer le temps lorsque le premier jeton est posé
         }
 
         Circle clickedCircle = (Circle) event.getSource();
@@ -92,6 +88,22 @@ public class MainController {
 
             // Mettre à jour le texte en fonction du joueur actuel
             textField.setText("C'est le tour du Joueur " + (couleurJetonActuel == Color.YELLOW ? "1" : "2"));
+
+            // Démarrer ou arrêter la timeline en fonction de demarrerTemps
+            if (demarrerTemps) {
+                // Démarrer la timeline
+                if (timeline != null && timeline.getStatus() != Timeline.Status.RUNNING) {
+                    timeline.play();
+                }
+            }
+
+            // Vérifier si la grille est pleine
+            if (gridPane.getChildren().size() == gridPane.getRowCount() * gridPane.getColumnCount()) {
+                // Arrêter la timeline si la grille est pleine
+                if (timeline != null) {
+                    timeline.stop();
+                }
+            }
 
             // Ajouter les cercles supprimés à nouveau à la grille, sauf celui situé à la position du jeton
             cerclesASupprimer.removeIf(node -> GridPane.getColumnIndex(node) == columnIndex && GridPane.getRowIndex(node) == row);

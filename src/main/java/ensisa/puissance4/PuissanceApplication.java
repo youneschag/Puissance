@@ -12,6 +12,8 @@ public class PuissanceApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(PuissanceApplication.class.getResource("main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 700);
+        MainController controller = fxmlLoader.getController();
+        controller.initialiserJeu();
         stage.setTitle("Puissance 4");
         stage.setScene(scene);
         stage.show();
@@ -21,3 +23,4 @@ public class PuissanceApplication extends Application {
         launch();
     }
 }
+
