@@ -40,4 +40,9 @@ Ajout la notion de score des matches (ex : 3:2)
 
 
 
+Ajout de l'option sombre dans l'interface
+
+
+
+
 
