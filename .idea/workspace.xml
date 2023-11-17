@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a7a7419-2e5e-4865-9524-9a29bc8098a2" name="Changes" comment="Ajout pop up lors du démarrage de l'appli, poiur expliquer les règles du jeu">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/UserInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/UserInfoPopUp.java" afterDir="false" />
+    <list default="true" id="5a7a7419-2e5e-4865-9524-9a29bc8098a2" name="Changes" comment="AJout des pop up pour definir les joueurs, le type de jeu, et la couleur du jeton">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ensisa/puissance4/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ensisa/puissance4/main-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/UserInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/UserInfoPopUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/UserInfoPopUp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +30,6 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GithubProjectSettings">
     <option name="branchProtectionPatterns">
@@ -252,7 +250,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700215869979</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="AJout des pop up pour definir les joueurs, le type de jeu, et la couleur du jeton">
+      <option name="closed" value="true" />
+      <created>1700234481432</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1700234481432</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -313,6 +319,7 @@
     <MESSAGE value="Le temps se rénitialise lorqu'on met une nouvelle partie" />
     <MESSAGE value="Affichage du type de jeu ( h vs h or h vs c), dans le textfield au centre de la partie" />
     <MESSAGE value="Ajout pop up lors du démarrage de l'appli, poiur expliquer les règles du jeu" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout pop up lors du démarrage de l'appli, poiur expliquer les règles du jeu" />
+    <MESSAGE value="AJout des pop up pour definir les joueurs, le type de jeu, et la couleur du jeton" />
+    <option name="LAST_COMMIT_MESSAGE" value="AJout des pop up pour definir les joueurs, le type de jeu, et la couleur du jeton" />
   </component>
 </project>

@@ -36,6 +36,7 @@ public class MainController {
     private Label usernameLabelJoueur2;
     private String selectedGameMode; // Choix du mode de jeu
     private Color selectedTokenColor; // Choix de la couleur du jeton
+    private String selectedOrdre;
     private Timeline timeline;
     private boolean demarrerTemps = false;
     @FXML
@@ -58,9 +59,25 @@ public class MainController {
         // Mettre à jour le texte et la couleur du jeton en fonction des informations du joueur
         mettreAJourTypePartie(userInfo.getSelectedGameMode());
         selectedGameMode = userInfo.getSelectedGameMode();
+        selectedOrdre = userInfo.getSelectedOrdre();
 
-        // Afficher le premier joueur dans le texte
-        textField.setText("C'est le tour du Joueur " + (selectedTokenColor == Color.YELLOW ? "1" : "2"));
+        // Déterminer la couleur du premier jeton en fonction du choix de l'utilisateur et de l'ordre de jeu
+        if ("Premier".equals(selectedOrdre)) {
+            selectedTokenColor = ("YELLOW".equals(userInfo.getSelectedToken())) ? Color.YELLOW : Color.RED;
+        } else if ("Deuxième".equals(selectedOrdre)) {
+            selectedTokenColor = ("YELLOW".equals(userInfo.getSelectedToken())) ? Color.RED : Color.YELLOW;
+        }
+
+        // Vérifier l'ordre de jeu et mettre à jour le texte en conséquence
+        if ("Premier".equals(selectedOrdre)) {
+            textField.setText("C'est le tour de " + userInfo.getUsername());
+        } else if ("Deuxième".equals(selectedOrdre)) {
+            if ("Human vs Human".equals(selectedGameMode)) {
+                textField.setText("C'est le tour de " + userInfo.getSecondusername());
+            } else {
+                textField.setText("C'est le tour du Computer");
+            }
+        }
 
         // Mise à jour du label avec le nom d'utilisateur en fonction du choix du jeton et de l'ordre
         if ("Human vs Computer".equals(selectedGameMode)) {
@@ -87,7 +104,6 @@ public class MainController {
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), this::updateDuration));
         timeline.setCycleCount(Timeline.INDEFINITE);
     }
-
 
     @FXML
     private Label durationLabel;
@@ -119,7 +135,6 @@ public class MainController {
         // Logique pour placer le jeton dans la colonne columnIndex
         placerJeton(columnIndex);
     }
-
 
     public void placerJeton(int columnIndex) {
         // Remove existing cercles in the clicked column and store them
@@ -164,6 +179,7 @@ public class MainController {
             gridPane.getChildren().addAll(cerclesASupprimer);
         }
     }
+
 
     // Modifiez la méthode supprimerCercles pour supprimer les instances de Cercle
     private List<Node> supprimerCercles(int columnIndex) {

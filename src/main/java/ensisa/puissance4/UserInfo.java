@@ -5,12 +5,14 @@ public class UserInfo {
     private String selectedToken;
     private String selectedGameMode;
     private String secondusername;
+    private String selectedOrdre;
 
-    public UserInfo(String username, String selectedToken, String selectedGameMode, String secondusername) {
+    public UserInfo(String username, String selectedToken, String selectedGameMode, String secondusername, String selectedOrdre) {
         this.username = username;
         this.selectedToken = selectedToken;
         this.selectedGameMode = selectedGameMode;
         this.secondusername = secondusername;
+        this.selectedOrdre = selectedOrdre;
     }
 
     // Ajoutez les getters selon vos besoins
@@ -27,6 +29,9 @@ public class UserInfo {
     }
     public String getSecondusername() {
         return secondusername;
+    }
+    public String getSelectedOrdre() {
+        return selectedOrdre;
     }
 }
 
