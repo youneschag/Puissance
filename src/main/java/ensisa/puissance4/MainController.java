@@ -34,6 +34,8 @@ public class MainController {
     private Label usernameLabelJoueur1;
     @FXML
     private Label usernameLabelJoueur2;
+    private String nomJoueur1;
+    private String nomJoueur2;
     private String selectedGameMode; // Choix du mode de jeu
     private Color selectedTokenColor; // Choix de la couleur du jeton
     private String selectedOrdre;
@@ -125,7 +127,11 @@ public class MainController {
             // Réinitialiser le jeu avant de placer le premier jeton
             reinitialiserJeu();
 
-            textField.setText("C'est le tour du Joueur 1/2");
+            // Initialiser les noms des joueurs
+            nomJoueur1 = usernameLabelJoueur1.getText();
+            nomJoueur2 = usernameLabelJoueur2.getText();
+
+            textField.setText("C'est le tour de " + nomJoueur1);
             premierClic = false;
             demarrerTemps = true; // Démarrer le temps lorsque le premier jeton est posé
         }
@@ -156,7 +162,7 @@ public class MainController {
             selectedTokenColor = (selectedTokenColor == Color.YELLOW) ? Color.RED : Color.YELLOW;
 
             // Mettre à jour le texte en fonction du joueur actuel
-            textField.setText("C'est le tour du Joueur " + (selectedTokenColor == Color.YELLOW ? "1" : "2"));
+            textField.setText("C'est le tour de " + (selectedTokenColor == Color.YELLOW ? nomJoueur1 : nomJoueur2));
 
             // Démarrer ou arrêter la timeline en fonction de demarrerTemps
             if (demarrerTemps) {

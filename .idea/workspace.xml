@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a7a7419-2e5e-4865-9524-9a29bc8098a2" name="Changes" comment="AJout des pop up pour definir les joueurs, le type de jeu, et la couleur du jeton">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/UserInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/UserInfoPopUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/UserInfoPopUp.java" afterDir="false" />
-    </list>
+    <list default="true" id="5a7a7419-2e5e-4865-9524-9a29bc8098a2" name="Changes" comment="Ajout ordre et alternance des couleurs, il manque juste que le textfield change en gardant les noms des utilisateurs, et que lors de la rénitialistion, l'ordre des utilisateurs ne disparait pas" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -258,7 +253,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700234481432</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Ajout ordre et alternance des couleurs, il manque juste que le textfield change en gardant les noms des utilisateurs, et que lors de la rénitialistion, l'ordre des utilisateurs ne disparait pas">
+      <option name="closed" value="true" />
+      <created>1700236486290</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1700236486290</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -320,6 +323,7 @@
     <MESSAGE value="Affichage du type de jeu ( h vs h or h vs c), dans le textfield au centre de la partie" />
     <MESSAGE value="Ajout pop up lors du démarrage de l'appli, poiur expliquer les règles du jeu" />
     <MESSAGE value="AJout des pop up pour definir les joueurs, le type de jeu, et la couleur du jeton" />
-    <option name="LAST_COMMIT_MESSAGE" value="AJout des pop up pour definir les joueurs, le type de jeu, et la couleur du jeton" />
+    <MESSAGE value="Ajout ordre et alternance des couleurs, il manque juste que le textfield change en gardant les noms des utilisateurs, et que lors de la rénitialistion, l'ordre des utilisateurs ne disparait pas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout ordre et alternance des couleurs, il manque juste que le textfield change en gardant les noms des utilisateurs, et que lors de la rénitialistion, l'ordre des utilisateurs ne disparait pas" />
   </component>
 </project>
