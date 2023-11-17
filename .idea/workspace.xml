@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a7a7419-2e5e-4865-9524-9a29bc8098a2" name="Changes" comment="Ajout de pop up de confirmation avant de quitter" />
+    <list default="true" id="5a7a7419-2e5e-4865-9524-9a29bc8098a2" name="Changes" comment="Ajout bouton Aide">
+      <change beforePath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/PuissanceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/PuissanceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ensisa/puissance4/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ensisa/puissance4/main-view.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -293,7 +296,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700251609566</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Ajout bouton Aide">
+      <option name="closed" value="true" />
+      <created>1700252022761</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1700252022761</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -360,6 +371,7 @@
     <MESSAGE value="Un peu plus d'interface" />
     <MESSAGE value="Alignement centrale du type de game" />
     <MESSAGE value="Ajout de pop up de confirmation avant de quitter" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout de pop up de confirmation avant de quitter" />
+    <MESSAGE value="Ajout bouton Aide" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout bouton Aide" />
   </component>
 </project>
