@@ -36,3 +36,8 @@ Bonus: Revoir la logique entre l'ordre et l'emplacement du joueur sous quel jeto
 
 
 
+Ajout la notion de score des matches (ex : 3:2)
+
+
+
+
