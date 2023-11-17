@@ -23,3 +23,8 @@ TD deuxième partie à faire : Humain vs Humain, Humain vs Ordinateur : laisser 
 
 
 Ajouter bouton Aide dans la toolbar qui va faire apparaitre le guide d'utilisation(premierement affiche des l'execution de l'appli) avec des textfield, pour expliquer le jeu, les regles, comment ajouter les jetons, quand finir la partie, ou chosiir quelle partie souhaitée, et voir l'historique des matches?
+
+
+
+Rajouter un pop up pour confirmer vouloir quitter le jeu quand je clique sur le bouton Quitter.
+
