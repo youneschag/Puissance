@@ -37,3 +37,8 @@ Bonus: Faire un pop up de souhait ou non pour modification des données de la pa
 Rajouter un bouton revenir dans les pop up pour changer les propriétés de la game
 
 
+
+Bonus: Revoir la logique entre l'ordre et l'emplacement du joueur sous quel jeton, et qui va commencer (problème mineur mais conséquent dans la manière de jouer). Par exemple, si on est deuxième et rouge, le joueur est bien rouge mais commence premier, à revoir dans tout les cas (partie initial et dans les new games).
+
+
+
