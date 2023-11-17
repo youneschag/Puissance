@@ -26,8 +26,8 @@
                 <HBox spacing="80.0" alignment="CENTER">
                     <MenuButton mnemonicParsing="false" text="New Game">
                         <items>
-                            <MenuItem mnemonicParsing="false" text="Human vs Human" />
-                            <MenuItem mnemonicParsing="false" text="Human vs Computer" />
+                            <MenuItem mnemonicParsing="false" text="Human vs Human" onAction="#handleHumanVsHuman" />
+                            <MenuItem mnemonicParsing="false" text="Human vs Computer" onAction="#handleHumanVsComputer" />
                         </items>
                     </MenuButton>
                     <TextField fx:id="textField" editable="false" text="Que la partie commence !" />

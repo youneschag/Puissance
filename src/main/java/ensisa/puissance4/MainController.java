@@ -37,6 +37,9 @@ public class MainController {
     // Méthode pour initialiser les éléments de jeu
     @FXML
     public void initialiserJeu() {
+        if (timeline != null) {
+            timeline.stop(); // Arrêter la timeline si elle est en cours
+        }
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), this::updateDuration));
         timeline.setCycleCount(Timeline.INDEFINITE);
     }
@@ -47,15 +50,20 @@ public class MainController {
 
     // Méthode appelée à chaque intervalle de la Timeline pour mettre à jour la durée
     private void updateDuration(ActionEvent event) {
-        secondsElapsed++;
         int minutes = secondsElapsed / 60;
         int seconds = secondsElapsed % 60;
         durationLabel.setText(String.format("Durée: %02d:%02d", minutes, seconds));
+
+        // Incrémenter les secondes après la mise à jour de l'affichage
+        secondsElapsed++;
     }
 
     @FXML
     private void handleColumnClick(MouseEvent event) {
         if (premierClic) {
+            // Réinitialiser le jeu avant de placer le premier jeton
+            reinitialiserJeu();
+
             textField.setText("C'est le tour du Joueur 1/2");
             premierClic = false;
             demarrerTemps = true; // Démarrer le temps lorsque le premier jeton est posé
@@ -66,6 +74,7 @@ public class MainController {
         // Logique pour placer le jeton dans la colonne columnIndex
         placerJeton(columnIndex);
     }
+
 
     public void placerJeton(int columnIndex) {
         // Remove existing cercles in the clicked column and store them
@@ -152,4 +161,51 @@ public class MainController {
         }
         return null; // Aucun jeton trouvé dans cette case
     }
+
+    // Méthode pour réinitialiser la partie
+    private void reinitialiserGrille() {
+        // Supprimez tous les cercles de la grille
+        gridPane.getChildren().removeIf(node -> node instanceof Jeton);
+    }
+
+    // Méthode pour réinitialiser la durée
+    private void reinitialiserDuree() {
+        secondsElapsed = 0;
+        updateDuration(null); // Mettez à jour la durée à zéro
+    }
+
+    // Méthode pour réinitialiser le texte du champ de texte
+    private void reinitialiserTextField() {
+        premierClic = true;
+        textField.setText("Que la partie commence !");
+    }
+
+    @FXML
+    private void handleHumanVsHuman(ActionEvent event) {
+        reinitialiserJeu(); // Appel de la méthode de réinitialisation sans démarrer le temps
+        // Ajoutez ici la logique pour le mode Human vs Human
+    }
+
+    @FXML
+    private void handleHumanVsComputer(ActionEvent event) {
+        reinitialiserJeu(); // Appel de la méthode de réinitialisation sans démarrer le temps
+        // Ajoutez ici la logique pour le mode Human vs Computer
+    }
+
+    // Méthode pour réinitialiser l'ensemble du jeu
+    // Méthode pour réinitialiser l'ensemble du jeu
+    public void reinitialiserJeu() {
+        reinitialiserGrille();
+        reinitialiserDuree();
+        reinitialiserTextField();
+
+        // Assurez-vous que demarrerTemps est réinitialisé à false
+        demarrerTemps = false;
+
+        // Arrêtez la timeline s'il est en cours
+        if (timeline != null && timeline.getStatus() == Timeline.Status.RUNNING) {
+            timeline.stop();
+        }
+    }
+
 }
