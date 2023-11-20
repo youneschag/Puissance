@@ -11,9 +11,11 @@ public class PuissanceApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(PuissanceApplication.class.getResource("main-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1000, 900);
+        Scene scene = new Scene(fxmlLoader.load(), 1600, 1000);
         MainController controller = fxmlLoader.getController();
+        scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         controller.initialiserJeu();
+        controller.setScene(scene);
         stage.setTitle("Puissance 4");
         stage.setScene(scene);
         stage.show();

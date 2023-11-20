@@ -1,0 +1,34 @@
+.white-cylinder-background {
+    -fx-background-radius: 10px; /* Ajustez la valeur en conséquence */
+    -fx-border-radius: 10px; /* Ajustez la valeur en conséquence */
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-start-margin: 20px;
+}
+
+.black-cylinder-background {
+    -fx-background-radius: 10px; /* Ajustez la valeur en conséquence */
+    -fx-border-radius: 10px; /* Ajustez la valeur en conséquence */
+    -fx-background-color: linear-gradient(to left, #000080 0%, #ADD8E6 100%);
+    -fx-border-color: white;
+}
+
+.theme-circle {
+    -fx-background-color: grey;
+    -fx-cursor: hand; /* Définir le curseur pour montrer que c'est cliquable */
+    -fx-translate-x: -15;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

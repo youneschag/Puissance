@@ -8,37 +8,51 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.ToggleButton?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ensisa.puissance4.MainController">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ensisa.puissance4.MainController">
     <top>
         <ToolBar prefHeight="60.0">
             <items>
-                <ToggleButton fx:id="themeSwitchButton" text="Theme sombre" onAction="#handleThemeSwitch" />
                 <HBox alignment="CENTER" spacing="80.0">
+                    <StackPane>
+                        <!-- Cylindre Blanc -->
+                        <Pane maxHeight="22" prefWidth="50" styleClass="white-cylinder-background"></Pane>
+                        <!-- Cylindre Noir -->
+                        <Pane maxHeight="20" prefWidth="48" styleClass="black-cylinder-background"></Pane>
+                        <!-- Cercle -->
+                        <Circle fx:id="themeCircle" fill="white" radius="8.5" styleClass="theme-circle" />
+                    </StackPane>
                     <MenuButton mnemonicParsing="false" text="New Game">
                         <items>
                             <MenuItem mnemonicParsing="false" onAction="#handleHumanVsHuman" text="Human vs Human" />
                             <MenuItem mnemonicParsing="false" onAction="#handleHumanVsComputer" text="Human vs Computer" />
                         </items>
                     </MenuButton>
+                    <Region HBox.hgrow="ALWAYS" />
+                    <Region HBox.hgrow="ALWAYS" />
                     <TextField fx:id="textField" editable="false" text="Que la partie commence !" />
+                    <Region HBox.hgrow="ALWAYS" />
                     <Region HBox.hgrow="ALWAYS" />
                     <Label fx:id="durationLabel" text="Durée: 00:00" textAlignment="CENTER">
                         <font>
                             <Font name="Arial Bold" size="13.0" />
                         </font>
                     </Label>
+                    <Region HBox.hgrow="ALWAYS" />
+                    <Region HBox.hgrow="ALWAYS" />
                     <Region HBox.hgrow="ALWAYS" />
                     <Button fx:id="helpButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" onAction="#handleHelpButtonAction" text="Aide ?">
                         <font>
@@ -83,7 +97,7 @@
                     <Font name="Arial" size="13.0" />
                 </font>
             </Label>
-            <TextField fx:id="gameTypeTextField" editable="false" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" alignment="CENTER" />
+            <TextField fx:id="gameTypeTextField" alignment="CENTER" editable="false" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
             <Label fx:id="usernameLabelJoueur2" GridPane.columnIndex="8" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
                 <font>
                     <Font name="Arial" size="13.0" />

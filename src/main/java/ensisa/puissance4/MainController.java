@@ -1,5 +1,6 @@
 package ensisa.puissance4;
 
+import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -65,6 +66,10 @@ public class MainController {
     private GridPane gridPane;
     @FXML
     private ToggleButton themeSwitchButton;
+    private Scene scene;
+    private boolean isDarkTheme = false;
+    @FXML
+    private Circle themeCircle;
 
     // Méthode pour initialiser les éléments de jeu
     @FXML
@@ -122,6 +127,8 @@ public class MainController {
         }
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), this::updateDuration));
         timeline.setCycleCount(Timeline.INDEFINITE);
+
+        themeCircle.setOnMouseClicked(this::handleThemeSwitch);
     }
 
     @FXML
@@ -430,17 +437,25 @@ public class MainController {
         // Afficher les règles
         ReglesDuJeuPopUp.afficherRegles();
     }
+    // Méthode pour injecter la scène
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
+
     @FXML
-    private void handleThemeSwitch(ActionEvent event) {
-        Scene scene = ((Node) event.getSource()).getScene();
-        if (themeSwitchButton.isSelected()) {
-            // Charger une feuille de style CSS sombre
+    private void handleThemeSwitch(MouseEvent event) {
+        TranslateTransition transition = new TranslateTransition(Duration.seconds(0.3), themeCircle);
+
+        if (themeCircle.getTranslateX() == -15) {
+            // Cercle à gauche, activer le thème sombre
             scene.getStylesheets().add(getClass().getResource("/dark-theme.css").toExternalForm());
-            themeSwitchButton.setText("Theme clair");
+            transition.setToX(15); // Déplace le cercle à droite
         } else {
-            // Charger une feuille de style CSS claire
+            // Cercle à droite, activer le thème clair
             scene.getStylesheets().remove(getClass().getResource("/dark-theme.css").toExternalForm());
-            themeSwitchButton.setText("Theme sombre");
+            transition.setToX(-15); // Déplace le cercle à gauche
         }
+
+        transition.play();
     }
 }
