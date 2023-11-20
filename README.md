@@ -15,9 +15,6 @@ TD deuxième partie à faire : Humain vs Humain, Humain vs Ordinateur : laisser 
 
 
 
-(Partie Maria) Il faut que les 4 éléments dans toolbar change de position si je redimensionne la fenêtre.
-
-
 
 Ajouter bouton Aide dans la toolbar qui va faire apparaitre le guide d'utilisation(premierement affiche des l'execution de l'appli) avec des textfield, pour expliquer le jeu, les regles, comment ajouter les jetons, quand finir la partie, ou chosiir quelle partie souhaitée, et voir l'historique des matches?
 
@@ -44,5 +41,4 @@ Ajout de l'option sombre dans l'interface
 
 
 
-
-
+Mettre l'historique dans les deux cotés des joueurs avec chancun son historique et un scroll y, c'est mieux que un hisotrique en bas barely seen, et peu commode pour un scroll 
