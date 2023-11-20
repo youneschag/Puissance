@@ -19,6 +19,15 @@
     -fx-translate-x: -15;
 }
 
+#historyButton, #helpButton, #exitButton, .menu-item, #themeCircle, #cercle1, #cercle2, #cercle3, #cercle4, #cercle5,
+#cercle6, #cercle7, #cercle8, #cercle9, #cercle10, #cercle11, #cercle12, #cercle13, #cercle14, #cercle15, #cercle16,
+#cercle17, #cercle18, #cercle19, #cercle20, #cercle21, #cercle22, #cercle23, #cercle24, #cercle25, #cercle26, #cercle27,
+#cercle28, #cercle29, #cercle30, #cercle31, #cercle32, #cercle33, #cercle34, #cercle35, #cercle36, #cercle37, #cercle38,
+#cercle39, #cercle40, #cercle41, #cercle42, #cercle43 {
+    -fx-cursor: hand;
+}
+
+
 
 
 

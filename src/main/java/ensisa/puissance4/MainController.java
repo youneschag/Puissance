@@ -2,6 +2,7 @@ package ensisa.puissance4;
 
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
+import javafx.css.Match;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.HPos;
@@ -12,6 +13,8 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.animation.KeyFrame;
@@ -64,12 +67,12 @@ public class MainController {
     private boolean demarrerTemps = false;
     @FXML
     private GridPane gridPane;
-    @FXML
-    private ToggleButton themeSwitchButton;
     private Scene scene;
     private boolean isDarkTheme = false;
     @FXML
     private Circle themeCircle;
+    @FXML
+    private VBox matchHistoryContainer;
 
     // Méthode pour initialiser les éléments de jeu
     @FXML
@@ -458,4 +461,52 @@ public class MainController {
 
         transition.play();
     }
+    private List<Match> getMatchList() {
+        // Exemple : retourne une liste statique de matchs pour la démo
+        List<Match> matchList = new ArrayList<>();
+        matchList.add(new Match("Joueur1", "Joueur2", "Gagné"));
+        matchList.add(new Match("Joueur3", "Joueur4", "Perdu"));
+        // Ajoutez d'autres matchs au besoin
+
+        return matchList;
+    }
+    public class Match {
+        private String player1;
+        private String player2;
+        private String result;
+
+        public Match(String joueur1, String joueur2, String resultat) {
+            this.player1 = joueur1;
+            this.player2 = joueur2;
+            this.result = resultat;
+        }
+
+        public String getPlayer1() {
+            return player1;
+        }
+
+        public String getPlayer2() {
+            return player2;
+        }
+
+        public String getResult() {
+            return result;
+        }
+
+        @Override
+        public String toString() {
+            return player1 + "," +  player2 + "," + result;
+        }
+    }
+
+    @FXML
+    private void showMatchHistory(ActionEvent event) {
+        // Exemple : retourne une liste statique de matchs pour la démo
+        List<Match> matchList = getMatchList(); // Méthode à implémenter
+
+        // Utilisez la nouvelle classe MatchHistoryWindow pour afficher la fenêtre
+        MatchHistoryWindow.display(matchList);
+    }
+
+
 }

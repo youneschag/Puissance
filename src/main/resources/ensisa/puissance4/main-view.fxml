@@ -41,8 +41,11 @@
                             <MenuItem mnemonicParsing="false" onAction="#handleHumanVsComputer" text="Human vs Computer" />
                         </items>
                     </MenuButton>
-                    <Region HBox.hgrow="ALWAYS" />
-                    <Region HBox.hgrow="ALWAYS" />
+                    <Label fx:id="scoreLabel" text="Score: 0:0" textAlignment="CENTER">
+                        <font>
+                            <Font name="Arial Bold" size="13.0" />
+                        </font>
+                    </Label>
                     <TextField fx:id="textField" editable="false" text="Que la partie commence !" />
                     <Region HBox.hgrow="ALWAYS" />
                     <Region HBox.hgrow="ALWAYS" />
@@ -51,9 +54,13 @@
                             <Font name="Arial Bold" size="13.0" />
                         </font>
                     </Label>
-                    <Region HBox.hgrow="ALWAYS" />
-                    <Region HBox.hgrow="ALWAYS" />
-                    <Region HBox.hgrow="ALWAYS" />
+                    <VBox fx:id="matchHistoryContainer" alignment="CENTER_RIGHT">
+                        <Button fx:id="historyButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" onAction="#showMatchHistory" text="Historique des matchs">
+                            <font>
+                                <Font name="Arial" size="13.0" />
+                            </font>
+                        </Button>
+                    </VBox>
                     <Button fx:id="helpButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" onAction="#handleHelpButtonAction" text="Aide ?">
                         <font>
                             <Font name="Arial" size="13.0" />
