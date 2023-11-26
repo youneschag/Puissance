@@ -3,7 +3,7 @@ Noms dans l'équipe : Chaguer Younes, Maria Ait Bouserhane
 
 
 
-TD deuxième partie à faire : Humain vs Humain, Humain vs Ordinateur : laisser à l'utilisateur le choix qu'il veut.
+TD deuxième partie à faire :  Humain vs Ordinateur : laisser à l'utilisateur le choix qu'il veut.
 
 
 
