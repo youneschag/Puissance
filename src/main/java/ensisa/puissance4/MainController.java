@@ -244,7 +244,7 @@ public class MainController {
                 if (timeline != null) {
                     timeline.stop();
                 }
-                showAlerte("Victoire !", "Le joueur : " + playerName + (selectedTokenColor == Color.YELLOW ? nomJoueur1 : nomJoueur2) + " a gagné !");
+                showAlerte("Victoire !", "Le joueur " + playerName + " a gagné !");
             }
         }
     }
@@ -595,17 +595,17 @@ public class MainController {
         int count = 1; // Compter le jeton actuel
         Color targetColor = selectedTokenColor;
 
-        int curCol = oCol + dCol;
-        int curRow = oLigne + dLigne;
+        int curCol = oCol;
+        int curRow = oLigne;
 
         while ((curCol >= 0) && (curCol < 8) && (curRow >= 0) && (curRow < 7)) {
             Jeton jeton = (Jeton) getJeton(curCol, curRow);
             if (jeton != null && memeCouleur(curCol, curRow, targetColor)) {
-                // Sinon on l'incrémente
+                // Si la couleur du jeton est celle recherchée, on l'incrémente
                 count++;
 
                 // On sort lorsque le compteur atteint 4
-                if (count == 4) {
+                if (count >= 4) {
                     return true;
                 }
             } else {
@@ -613,13 +613,14 @@ public class MainController {
                 targetColor = jeton == null ? null : jeton.getCouleur();
                 count = 1;
             }
-
+            System.out.println("CurCol: " + curCol + ", CurRow: " + curRow + ", Count: " + count);
             // On passe à l'itération suivante
             curCol += dCol;
             curRow += dLigne;
         }
         return false;
     }
+
 
     private boolean memeCouleur(int column, int row, Color targetColor) {
         Node node = getJeton(column, row);
