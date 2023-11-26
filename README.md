@@ -49,6 +49,6 @@ Rajouter dans le toolbar, un bouton "historique des matches " pour afficher de t
 
 
 
-Changer la couleur de l'historique jaune, car on ne voit rine avec la couleur jaune sur du blanc dans l'historique, de même pour le dark-theme. Quand on fait une nouvelle partie, l'historique doit se rénitialiser.
+Changer la couleur de l'historique jaune, car on ne voit rine avec la couleur jaune sur du blanc dans l'historique, de même pour le dark-theme. Quand on fait une nouvelle partie, l'historique doit se rénitialiser. Mettre le width initialise des historiques dasn une taille constante pour eviter de faire bouger la grille au debut de chaque premier clic sur l'un des historiques.  
 
 
