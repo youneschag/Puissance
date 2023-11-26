@@ -668,8 +668,10 @@ public class MainController {
                 modeResult.ifPresent(selectedMode -> {
                     // L'utilisateur a choisi un mode, appeler les actions correspondantes
                     if ("Human vs Human".equals(selectedMode)) {
+                        reinitialiserScore();
                         handleHumanVsHuman();
                     } else if ("Human vs Computer".equals(selectedMode)) {
+                        reinitialiserScore();
                         handleHumanVsComputer();
                     }
                 });
@@ -686,4 +688,12 @@ public class MainController {
         // Mettez à jour l'étiquette du score
         scoreLabel.setText("Score: " + scoreJoueur1 + ":" + scoreJoueur2);
     }
+    private void reinitialiserScore() {
+        scoreJoueur1 = 0;
+        scoreJoueur2 = 0;
+
+        // Mettez à jour l'étiquette du score
+        scoreLabel.setText("Score: 0:0");
+    }
+
 }
