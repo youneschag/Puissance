@@ -50,3 +50,4 @@ Ajouter que quand la grille est pleine ou qu'il y a un vainqueur avant que la gr
 
 
 
+Bug dans la logique de gagner a voir photo pour regler probleme dans le code 
