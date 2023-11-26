@@ -174,6 +174,7 @@ public class MainController {
 
     @FXML
     private VBox redMovesHistory;
+    private int nombreToken = 0;
 
     public void placerJeton(int columnIndex) {
         // Remove existing circles in the clicked column and store them
@@ -190,7 +191,7 @@ public class MainController {
             GridPane.setHalignment(token, HPos.CENTER);
             GridPane.setValignment(token, VPos.CENTER);
             gridPane.getChildren().add(token);
-
+            nombreToken++;
             // Alternating the token color for the next player
             selectedTokenColor = (selectedTokenColor == Color.YELLOW) ? Color.RED : Color.YELLOW;
 
@@ -205,8 +206,8 @@ public class MainController {
                 }
             }
             // Check if the grid is full
-            if (gridPane.getChildren().size() == gridPane.getRowCount() * gridPane.getColumnCount()) {
-                // Stop the timeline if the grid is full
+            if (nombreToken == 42) {
+                // Arrêter le timeline s'il existe
                 if (timeline != null) {
                     timeline.stop();
                 }
@@ -452,6 +453,7 @@ public class MainController {
 
         // Assurez-vous que demarrerTemps est réinitialisé à false
         demarrerTemps = false;
+        nombreToken = 0;
 
         // Arrêtez la timeline s'il est en cours
         if (timeline != null && timeline.getStatus() == Timeline.Status.RUNNING) {
