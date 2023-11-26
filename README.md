@@ -47,3 +47,8 @@ Mettre l'historique dans les deux cotés des joueurs avec chancun son historique
 
 Rajouter dans le toolbar, un bouton "historique des matches " pour afficher de tous les matchs joués tant que l'appli est executée et cela meme si on appuie sur "new game" avec les couleurs vert, rouge, et gris pour victoire, defaite, draw, et avoir les 3 profiles d'utilisateurs (ordi, joueur 1, joueur 2), et quand onn clique dessus ,ca donne l'historique des matches pour ce joueur en particulier.
 
+
+
+Changer la couleur de l'historique jaune, car on ne voit rine avec la couleur jaune sur du blanc dans l'historique, de même pour le dark-theme. Quand on fait une nouvelle partie, l'historique doit se rénitialiser. Mettre le width initialise des historiques dasn une taille constante pour eviter de faire bouger la grille au debut de chaque premier clic sur l'un des historiques.  
+
+
