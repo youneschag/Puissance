@@ -216,10 +216,10 @@ public class MainController {
             }
             // Check if the grid is full
             if (nombreToken == 42) {
-                // Arrêter le timeline s'il existe
                 if (timeline != null) {
                     timeline.stop();
                 }
+                showAlerte("Egalité !", "Le match a fini par une égalité.");
             }
 
             // Remove the circles that were taken out from the grid, except the one placed at the token position

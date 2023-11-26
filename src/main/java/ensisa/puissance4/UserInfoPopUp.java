@@ -45,7 +45,6 @@ public class UserInfoPopUp {
             Optional<String> secondUsernameResult = secondUsernameDialog.showAndWait();
             secondUsername = secondUsernameResult.orElse("");
         }
-
         // Boîte de dialogue pour demander l'ordre de jeu
         List<String> orderChoices = List.of("Premier", "Deuxième"); // Ajoutez d'autres choix au besoin
         ChoiceDialog<String> orderDialog = new ChoiceDialog<>(orderChoices.get(0), orderChoices);
