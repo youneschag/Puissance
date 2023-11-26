@@ -169,13 +169,8 @@
            <VBox alignment="BOTTOM_LEFT">
                <TitledPane animated="false" expanded="false" text="Historique du jeton jaune">
                    <content>
-                       <ScrollPane fitToWidth="true">
-                           <VBox>
-                               <!-- Contenu de l'historique gauche -->
-                               <DialogPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0">
-                                   <!-- Contenu de l'historique gauche -->
-                               </DialogPane>
-                               <!-- ... Ajoutez autant d'éléments que nécessaire ... -->
+                       <ScrollPane vbarPolicy="ALWAYS" maxHeight="400" >
+                           <VBox fx:id="yellowMovesHistory">
                            </VBox>
                        </ScrollPane>
                    </content>
@@ -189,13 +184,8 @@
            <VBox alignment="BOTTOM_RIGHT">
                <TitledPane animated="false" expanded="false" text="Historique du jeton rouge">
                    <content>
-                       <ScrollPane fitToWidth="true">
-                           <VBox>
-                               <!-- Contenu de l'historique droit -->
-                               <DialogPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0">
-                                   <!-- Contenu de l'historique droit -->
-                               </DialogPane>
-                               <!-- ... Ajoutez autant d'éléments que nécessaire ... -->
+                       <ScrollPane vbarPolicy="ALWAYS" maxHeight="400">
+                           <VBox fx:id="redMovesHistory" >
                            </VBox>
                        </ScrollPane>
                    </content>

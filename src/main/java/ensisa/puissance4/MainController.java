@@ -105,7 +105,6 @@ public class MainController {
                 textField.setText("C'est le tour du Computer");
             }
         }
-
         // Mise à jour du label avec le nom d'utilisateur en fonction du choix du jeton et de l'ordre
         if ("Human vs Computer".equals(selectedGameMode)) {
             if ("YELLOW".equals(userInfo.getSelectedToken())) {
@@ -133,6 +132,7 @@ public class MainController {
 
         themeCircle.setOnMouseClicked(this::handleThemeSwitch);
     }
+
 
     @FXML
     private Label durationLabel;
@@ -169,50 +169,75 @@ public class MainController {
         placerJeton(columnIndex);
     }
 
+    @FXML
+    private VBox yellowMovesHistory;
+
+    @FXML
+    private VBox redMovesHistory;
+
     public void placerJeton(int columnIndex) {
-        // Remove existing cercles in the clicked column and store them
-        List<Node> cerclesASupprimer = supprimerCercles(columnIndex);
+        // Remove existing circles in the clicked column and store them
+        List<Node> circlesToRemove = supprimerCercles(columnIndex);
 
         int row = trouverLigneVide(columnIndex);
 
-        // Vérifier si la colonne est pleine
+        // Check if the column is not full
         if (row != -1) {
-            // Placer le jeton dans la grille avec la couleur actuelle
-            Jeton jeton = new Jeton(25, selectedTokenColor);
-            GridPane.setColumnIndex(jeton, columnIndex);
-            GridPane.setRowIndex(jeton, row);
-            GridPane.setHalignment(jeton, HPos.CENTER);
-            GridPane.setValignment(jeton, VPos.CENTER);
-            gridPane.getChildren().add(jeton);
+            // Place the token on the grid with the current color
+            Jeton token = new Jeton(25, selectedTokenColor);
+            GridPane.setColumnIndex(token, columnIndex);
+            GridPane.setRowIndex(token, row);
+            GridPane.setHalignment(token, HPos.CENTER);
+            GridPane.setValignment(token, VPos.CENTER);
+            gridPane.getChildren().add(token);
 
-            // Alterner la couleur du jeton pour le prochain joueur
+            // Alternating the token color for the next player
             selectedTokenColor = (selectedTokenColor == Color.YELLOW) ? Color.RED : Color.YELLOW;
 
-            // Mettre à jour le texte en fonction du joueur actuel
+            // Update the text according to the current player
             textField.setText("C'est le tour de " + (selectedTokenColor == Color.YELLOW ? nomJoueur1 : nomJoueur2));
 
-            // Démarrer ou arrêter la timeline en fonction de demarrerTemps
+            // Start or stop the timeline based on demarrerTemps
             if (demarrerTemps) {
-                // Démarrer la timeline
+                // Start the timeline
                 if (timeline != null && timeline.getStatus() != Timeline.Status.RUNNING) {
                     timeline.play();
                 }
             }
-
-            // Vérifier si la grille est pleine
+            // Check if the grid is full
             if (gridPane.getChildren().size() == gridPane.getRowCount() * gridPane.getColumnCount()) {
-                // Arrêter la timeline si la grille est pleine
+                // Stop the timeline if the grid is full
                 if (timeline != null) {
                     timeline.stop();
                 }
             }
 
-            // Ajouter les cercles supprimés à nouveau à la grille, sauf celui situé à la position du jeton
-            cerclesASupprimer.removeIf(node -> GridPane.getColumnIndex(node) == columnIndex && GridPane.getRowIndex(node) == row);
-            gridPane.getChildren().addAll(cerclesASupprimer);
+            // Remove the circles that were taken out from the grid, except the one placed at the token position
+            circlesToRemove.removeIf(node -> GridPane.getColumnIndex(node) == columnIndex && GridPane.getRowIndex(node) == row);
+            gridPane.getChildren().addAll(circlesToRemove);
+
+
+            // Déterminer le nom du joueur en fonction de la couleur du jeton
+            String playerName = (selectedTokenColor == Color.RED) ? nomJoueur1 : nomJoueur2;
+            VBox movesHistory = (selectedTokenColor == Color.RED) ? yellowMovesHistory : redMovesHistory;
+
+            // Inverser l'affectation des noms de joueurs si la couleur du jeton est jaune
+            if (selectedTokenColor == Color.YELLOW) {
+                playerName = nomJoueur2; // Le joueur jaune est nomJoueur1, donc nomJoueur2 ici
+                movesHistory = redMovesHistory; // Historique rouge pour le joueur jaune
+            } else if (selectedTokenColor == Color.RED) {
+                playerName = nomJoueur1; // Le joueur rouge est nomJoueur2, donc nomJoueur1 ici
+                movesHistory = yellowMovesHistory; // Historique jaune pour le joueur rouge
+            }
+
+            // Création du label pour le mouvement
+            Label moveDetails = new Label(" " + playerName + ", " + " Ligne " + (row) + ", " + " Colonne " + (columnIndex) + ", " + " Durée: " + secondsElapsed + " secondes.\n\n");
+            // Couleur du texte selon la couleur du jeton
+            Color textColor = (selectedTokenColor == Color.YELLOW) ? Color.DARKRED : Color.YELLOW;
+            moveDetails.setTextFill(textColor);
+            movesHistory.getChildren().add(moveDetails); // Ajout du label à l'historique
         }
     }
-
 
     // Modifiez la méthode supprimerCercles pour supprimer les instances de Cercle
     private List<Node> supprimerCercles(int columnIndex) {
@@ -239,6 +264,7 @@ public class MainController {
         }
         return -1; // La colonne est pleine
     }
+
     private Node getJeton(int columnIndex, int rowIndex) {
         for (Node node : gridPane.getChildren()) {
             Integer nodeColumnIndex = GridPane.getColumnIndex(node);
@@ -334,9 +360,9 @@ public class MainController {
                 usernameLabelJoueur2.setText(nomJoueur2);
 
                 // Afficher le premier joueur dans le texte en fonction de l'ordre choisi
-                if ("Premier".equals(selectedOrdre) && Color.YELLOW.equals(selectedTokenColor)){
+                if ("Premier".equals(selectedOrdre) && Color.YELLOW.equals(selectedTokenColor)) {
                     textField.setText("C'est le tour de " + nomJoueur1);
-                } else if ("Premier".equals(selectedOrdre) && Color.RED.equals(selectedTokenColor)){
+                } else if ("Premier".equals(selectedOrdre) && Color.RED.equals(selectedTokenColor)) {
                     textField.setText("C'est le tour de " + nomJoueur2);
                 } else if ("Deuxième".equals(selectedOrdre) && Color.YELLOW.equals(selectedTokenColor)) {
                     textField.setText("C'est le tour de " + nomJoueur2);
@@ -403,9 +429,9 @@ public class MainController {
                 usernameLabelJoueur2.setText(nomJoueur2);
 
                 // Afficher le premier joueur dans le texte en fonction de l'ordre choisi
-                if ("Premier".equals(selectedOrdre) && Color.YELLOW.equals(selectedTokenColor)){
+                if ("Premier".equals(selectedOrdre) && Color.YELLOW.equals(selectedTokenColor)) {
                     textField.setText("C'est le tour de " + nomJoueur1);
-                } else if ("Premier".equals(selectedOrdre) && Color.RED.equals(selectedTokenColor)){
+                } else if ("Premier".equals(selectedOrdre) && Color.RED.equals(selectedTokenColor)) {
                     textField.setText("C'est le tour de " + nomJoueur2);
                 } else if ("Deuxième".equals(selectedOrdre) && Color.YELLOW.equals(selectedTokenColor)) {
                     textField.setText("C'est le tour de " + nomJoueur2);
@@ -432,14 +458,17 @@ public class MainController {
             timeline.stop();
         }
     }
+
     public void mettreAJourTypePartie(String typePartie) {
         gameTypeTextField.setText(typePartie);
     }
+
     @FXML
     private void handleHelpButtonAction(ActionEvent event) {
         // Afficher les règles
         ReglesDuJeuPopUp.afficherRegles();
     }
+
     // Méthode pour injecter la scène
     public void setScene(Scene scene) {
         this.scene = scene;
@@ -461,6 +490,7 @@ public class MainController {
 
         transition.play();
     }
+
     private List<Match> getMatchList() {
         // Exemple : retourne une liste statique de matchs pour la démo
         List<Match> matchList = new ArrayList<>();
@@ -470,6 +500,7 @@ public class MainController {
 
         return matchList;
     }
+
     public class Match {
         private String player1;
         private String player2;
@@ -495,7 +526,7 @@ public class MainController {
 
         @Override
         public String toString() {
-            return player1 + "," +  player2 + "," + result;
+            return player1 + "," + player2 + "," + result;
         }
     }
 
@@ -507,6 +538,4 @@ public class MainController {
         // Utilisez la nouvelle classe MatchHistoryWindow pour afficher la fenêtre
         MatchHistoryWindow.display(matchList);
     }
-
-
 }
