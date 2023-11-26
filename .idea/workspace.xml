@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a7a7419-2e5e-4865-9524-9a29bc8098a2" name="Changes" comment="Logique mise pour gagner avec quelques petits bugs">
+    <list default="true" id="5a7a7419-2e5e-4865-9524-9a29bc8098a2" name="Changes" comment="Logique Humain vs Humain complete">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ensisa/puissance4/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ensisa/puissance4/main-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -375,7 +376,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701030475883</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Logique Humain vs Humain complete">
+      <option name="closed" value="true" />
+      <created>1701035685037</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1701035685037</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -420,7 +429,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Ajout de jeton mais disparition de la colonne" />
     <MESSAGE value="Ajout de jeton mais modif de son emplacement, et toujours pas de 2 jetons dans la meme colonne" />
     <MESSAGE value="Ajout de jeton avec son emplacement, et toujours pas de 2 jetons dans la meme colonne" />
     <MESSAGE value="Alternance entre les jetons des 2 joueurs mais toujours pas de 2 jetons l'un au dessus de l'autre dans la même colonnne." />
@@ -445,6 +453,7 @@
     <MESSAGE value="Historique modifié" />
     <MESSAGE value="le temps s'arrete quand la grille est full" />
     <MESSAGE value="Logique mise pour gagner avec quelques petits bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Logique mise pour gagner avec quelques petits bugs" />
+    <MESSAGE value="Logique Humain vs Humain complete" />
+    <option name="LAST_COMMIT_MESSAGE" value="Logique Humain vs Humain complete" />
   </component>
 </project>

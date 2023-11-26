@@ -25,6 +25,8 @@ import javafx.util.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import javafx.scene.control.Label;
+
 
 public class MainController {
     @FXML
@@ -73,6 +75,12 @@ public class MainController {
     private Circle themeCircle;
     @FXML
     private VBox matchHistoryContainer;
+    private String dernierGagnant = "";
+    private int scoreJoueur1 = 0;
+    private int scoreJoueur2 = 0;
+    @FXML
+    private Label scoreLabel;
+
 
     // Méthode pour initialiser les éléments de jeu
     @FXML
@@ -244,6 +252,7 @@ public class MainController {
                 if (timeline != null) {
                     timeline.stop();
                 }
+                dernierGagnant = playerName;
                 showAlerte("Victoire !", "Le joueur " + playerName + " a gagné !");
             }
         }
@@ -311,7 +320,7 @@ public class MainController {
     }
 
     @FXML
-    private void handleHumanVsHuman(ActionEvent event) {
+    private void handleHumanVsHuman() {
         reinitialiserJeu();
         // Vérifier si le type de jeu a changé
         if (!"Human vs Human".equals(gameTypeTextField.getText())) {
@@ -386,7 +395,7 @@ public class MainController {
     }
 
     @FXML
-    private void handleHumanVsComputer(ActionEvent event) {
+    private void handleHumanVsComputer() {
         reinitialiserJeu();
         // Vérifier si le type de jeu a changé
         if (!"Human vs Computer".equals(gameTypeTextField.getText())) {
@@ -613,7 +622,6 @@ public class MainController {
                 targetColor = jeton == null ? null : jeton.getCouleur();
                 count = 1;
             }
-            System.out.println("CurCol: " + curCol + ", CurRow: " + curRow + ", Count: " + count);
             // On passe à l'itération suivante
             curCol += dCol;
             curRow += dLigne;
@@ -628,10 +636,54 @@ public class MainController {
     }
 
     private void showAlerte(String titre, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(titre);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
+        // Créer une boîte de dialogue
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.setTitle(titre);
+        dialog.setHeaderText(null);
+        dialog.setContentText(message);
+
+        // Ajouter les boutons "Refaire une partie" et "Changer de mode"
+        ButtonType refairePartieButton = new ButtonType("Refaire une partie", ButtonBar.ButtonData.OK_DONE);
+        ButtonType changerModeButton = new ButtonType("Changer de mode", ButtonBar.ButtonData.CANCEL_CLOSE);
+        dialog.getDialogPane().getButtonTypes().addAll(refairePartieButton, changerModeButton);
+
+        // Afficher la boîte de dialogue et attendre que l'utilisateur clique sur l'un des boutons
+        Optional<ButtonType> result = dialog.showAndWait();
+
+        // Traiter la réponse de l'utilisateur
+        result.ifPresent(buttonType -> {
+            if (buttonType == refairePartieButton) {
+                // L'utilisateur a cliqué sur "Refaire une partie"
+                incrementerScore();
+                reinitialiserJeu();
+            } else if (buttonType == changerModeButton) {
+                // L'utilisateur a cliqué sur "Changer de mode"
+                // Afficher un nouveau dialogue avec les options "Human vs Human" et "Human vs Computer"
+                ChoiceDialog<String> modeDialog = new ChoiceDialog<>("Human vs Human", "Human vs Computer");
+                modeDialog.setTitle("Choisir un mode");
+                modeDialog.setHeaderText(null);
+                modeDialog.setContentText("Choisissez le mode de jeu :");
+
+                Optional<String> modeResult = modeDialog.showAndWait();
+                modeResult.ifPresent(selectedMode -> {
+                    // L'utilisateur a choisi un mode, appeler les actions correspondantes
+                    if ("Human vs Human".equals(selectedMode)) {
+                        handleHumanVsHuman();
+                    } else if ("Human vs Computer".equals(selectedMode)) {
+                        handleHumanVsComputer();
+                    }
+                });
+            }
+        });
+    }
+    private void incrementerScore() {
+        if (nomJoueur1 == dernierGagnant) {
+            scoreJoueur1++;
+        } else if (nomJoueur2 == dernierGagnant) {
+            scoreJoueur2++;
+        }
+
+        // Mettez à jour l'étiquette du score
+        scoreLabel.setText("Score: " + scoreJoueur1 + ":" + scoreJoueur2);
     }
 }
