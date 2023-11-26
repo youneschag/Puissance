@@ -192,6 +192,7 @@ public class MainController {
             GridPane.setValignment(token, VPos.CENTER);
             gridPane.getChildren().add(token);
             nombreToken++;
+
             // Alternating the token color for the next player
             selectedTokenColor = (selectedTokenColor == Color.YELLOW) ? Color.RED : Color.YELLOW;
 
@@ -237,6 +238,14 @@ public class MainController {
             Color textColor = (selectedTokenColor == Color.YELLOW) ? Color.DARKRED : Color.YELLOW;
             moveDetails.setTextFill(textColor);
             movesHistory.getChildren().add(moveDetails); // Ajout du label à l'historique
+
+            // Vérifier si le joueur actuel a gagné après avoir placé le jeton
+            if (aGagne()) {
+                if (timeline != null) {
+                    timeline.stop();
+                }
+                showAlerte("Victoire !", "Le joueur : " + playerName + (selectedTokenColor == Color.YELLOW ? nomJoueur1 : nomJoueur2) + " a gagné !");
+            }
         }
     }
 
@@ -539,5 +548,89 @@ public class MainController {
 
         // Utilisez la nouvelle classe MatchHistoryWindow pour afficher la fenêtre
         MatchHistoryWindow.display(matchList);
+    }
+    private boolean aGagne() {
+        // Vérifie les horizontales ( - )
+        for (int ligne = 0; ligne < 7; ligne++) {
+            if (countJetonsAlignes(0, ligne, 1, 0)) {
+                return true;
+            }
+        }
+
+        // Vérifie les verticales ( ¦ )
+        for (int col = 0; col < 8; col++) {
+            if (countJetonsAlignes(col, 0, 0, 1)) {
+                return true;
+            }
+        }
+
+        // Diagonales (cherche depuis la ligne du bas)
+        for (int col = 0; col < 8; col++) {
+            // Première diagonale ( / )
+            if (countJetonsAlignes(col, 0, 1, 1)) {
+                return true;
+            }
+            // Deuxième diagonale ( \ )
+            if (countJetonsAlignes(col, 0, -1, 1)) {
+                return true;
+            }
+        }
+        // Diagonales (cherche depuis les colonnes gauches et droites)
+        for (int ligne = 0; ligne < 7; ligne++) {
+            // Première diagonale ( / )
+            if (countJetonsAlignes(0, ligne, 1, 1)) {
+                return true;
+            }
+            // Deuxième diagonale ( \ )
+            if (countJetonsAlignes(7, ligne, -1, 1)) {
+                return true;
+            }
+        }
+
+        // On n'a rien trouvé
+        return false;
+    }
+
+    private boolean countJetonsAlignes(int oCol, int oLigne, int dCol, int dLigne) {
+        int count = 1; // Compter le jeton actuel
+        Color targetColor = selectedTokenColor;
+
+        int curCol = oCol + dCol;
+        int curRow = oLigne + dLigne;
+
+        while ((curCol >= 0) && (curCol < 8) && (curRow >= 0) && (curRow < 7)) {
+            Jeton jeton = (Jeton) getJeton(curCol, curRow);
+            if (jeton != null && memeCouleur(curCol, curRow, targetColor)) {
+                // Sinon on l'incrémente
+                count++;
+
+                // On sort lorsque le compteur atteint 4
+                if (count == 4) {
+                    return true;
+                }
+            } else {
+                // Si la couleur change ou le jeton est null, on réinitialise le compteur
+                targetColor = jeton == null ? null : jeton.getCouleur();
+                count = 1;
+            }
+
+            // On passe à l'itération suivante
+            curCol += dCol;
+            curRow += dLigne;
+        }
+        return false;
+    }
+
+    private boolean memeCouleur(int column, int row, Color targetColor) {
+        Node node = getJeton(column, row);
+        return node instanceof Jeton && ((Jeton) node).getCouleur() == targetColor;
+    }
+
+    private void showAlerte(String titre, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(titre);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
