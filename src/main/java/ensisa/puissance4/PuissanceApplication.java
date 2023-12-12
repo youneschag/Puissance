@@ -16,7 +16,6 @@ public class PuissanceApplication extends Application {
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         controller.initialiserJeu();
         controller.setScene(scene);
-        
         stage.setTitle("Puissance 4");
         stage.setScene(scene);
         stage.show();
