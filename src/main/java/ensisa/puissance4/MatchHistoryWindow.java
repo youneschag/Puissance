@@ -1,60 +1,33 @@
 package ensisa.puissance4;
 
-import javafx.geometry.Insets;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.Separator;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.util.List;
 
 public class MatchHistoryWindow {
 
-    public static void display(List<MainController.Match> matchList) {
+    public static void display(List<Match> matchList, String dernierGagnant) {
         Stage window = new Stage();
-
-        // Configure la fenêtre
-        window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Historique des matchs");
 
-        // Crée le contenu de la fenêtre
-        VBox layout = new VBox(10);
-        layout.setPadding(new Insets(10));
-
-        // Crée la liste des matchs avec des séparateurs
+        // Create a ListView to display match history
         ListView<String> listView = new ListView<>();
-        for (MainController.Match match : matchList) {
-            // Ajoute le match à la liste avec la couleur appropriée
-            String matchText = match.toString();
-            Label matchLabel = new Label(matchText);
-            if ("Gagné".equals(match.getResult())) {
-                matchLabel.setTextFill(Color.GREEN);
-            } else if ("Perdu".equals(match.getResult())) {
-                matchLabel.setTextFill(Color.RED);
-            } else {
-                matchLabel.setTextFill(Color.BLACK);
-            }
+        ObservableList<String> items = FXCollections.observableArrayList();
 
-            // Ajoute le label à la liste
-            listView.getItems().add(matchLabel.getText());
+        // Add each match result to the ListView
 
-            // Ajoute une ligne de séparation
-            Separator separator = new Separator();
-            layout.getChildren().addAll(separator, matchLabel);
-        }
 
-        layout.getChildren().add(listView);
+        listView.setItems(items);
 
-        // Affiche la fenêtre
-        Scene scene = new Scene(layout, 300, 200);
+        // Add the ListView to the scene
+        Scene scene = new Scene(listView, 400, 300);
         window.setScene(scene);
-        window.showAndWait();
+
+        // Show the window
+        window.show();
     }
 }
-
-
-

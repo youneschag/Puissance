@@ -2,7 +2,6 @@ package ensisa.puissance4;
 
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
-import javafx.css.Match;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.HPos;
@@ -10,10 +9,8 @@ import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -243,8 +240,13 @@ public class MainController {
             // Création du label pour le mouvement
             Label moveDetails = new Label(" " + playerName + ", " + " Ligne " + (row) + ", " + " Colonne " + (columnIndex) + ", " + " Durée: " + secondsElapsed + " secondes.\n\n");
             // Couleur du texte selon la couleur du jeton
-            Color textColor = (selectedTokenColor == Color.YELLOW) ? Color.DARKRED : Color.YELLOW;
-            moveDetails.setTextFill(textColor);
+            if (selectedTokenColor == Color.YELLOW) {
+                moveDetails.setTextFill(Color.RED); // Changer la couleur du texte à l'or
+            } else {
+                // Si la couleur n'est pas jaune, utilisez une autre couleur pour le texte
+                Color textColor = (selectedTokenColor == Color.RED) ? Color.DARKGOLDENROD : Color.YELLOW;
+                moveDetails.setTextFill(textColor);
+            }
             movesHistory.getChildren().add(moveDetails); // Ajout du label à l'historique
 
             // Vérifier si le joueur actuel a gagné après avoir placé le jeton
@@ -512,52 +514,27 @@ public class MainController {
     }
 
     private List<Match> getMatchList() {
-        // Exemple : retourne une liste statique de matchs pour la démo
         List<Match> matchList = new ArrayList<>();
-        matchList.add(new Match("Joueur1", "Joueur2", "Gagné"));
-        matchList.add(new Match("Joueur3", "Joueur4", "Perdu"));
-        // Ajoutez d'autres matchs au besoin
-
+        // Get the duration of the match from secondsElapsed
+        int durationInSeconds = secondsElapsed;
+        matchList.add(new Match(nomJoueur1, nomJoueur2, aGagne(), durationInSeconds));
         return matchList;
     }
-
-    public class Match {
-        private String player1;
-        private String player2;
-        private String result;
-
-        public Match(String joueur1, String joueur2, String resultat) {
-            this.player1 = joueur1;
-            this.player2 = joueur2;
-            this.result = resultat;
-        }
-
-        public String getPlayer1() {
-            return player1;
-        }
-
-        public String getPlayer2() {
-            return player2;
-        }
-
-        public String getResult() {
-            return result;
-        }
-
-        @Override
-        public String toString() {
-            return player1 + "," + player2 + "," + result;
-        }
-    }
-
     @FXML
     private void showMatchHistory(ActionEvent event) {
-        // Exemple : retourne une liste statique de matchs pour la démo
-        List<Match> matchList = getMatchList(); // Méthode à implémenter
+        List<Match> matchList = getMatchList();
 
-        // Utilisez la nouvelle classe MatchHistoryWindow pour afficher la fenêtre
-        MatchHistoryWindow.display(matchList);
+        if (matchList.isEmpty()) {
+            // No matches played yet
+            showAlerte("Historique des matchs", "Aucun match n'a encore été joué.");
+        } else {
+            // Matches have been played
+            Match latestMatch = matchList.get(matchList.size() - 1);
+            String matchResult = latestMatch.getMatchResult(selectedTokenColor);
+            MatchHistoryWindow.display(matchList, dernierGagnant);
+        }
     }
+
     private boolean aGagne() {
         // Vérifie les horizontales ( - )
         for (int ligne = 0; ligne < 7; ligne++) {
@@ -595,13 +572,11 @@ public class MainController {
                 return true;
             }
         }
-
-        // On n'a rien trouvé
         return false;
     }
 
     private boolean countJetonsAlignes(int oCol, int oLigne, int dCol, int dLigne) {
-        int count = 1; // Compter le jeton actuel
+        int count = 1;
         Color targetColor = selectedTokenColor;
 
         int curCol = oCol;
@@ -695,5 +670,4 @@ public class MainController {
         // Mettez à jour l'étiquette du score
         scoreLabel.setText("Score: 0:0");
     }
-
 }
