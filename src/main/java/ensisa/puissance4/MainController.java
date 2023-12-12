@@ -465,12 +465,17 @@ public class MainController {
         }
     }
 
+    private void effacerHistorique() {
+        yellowMovesHistory.getChildren().clear();
+        redMovesHistory.getChildren().clear();
+    }
+
     // Méthode pour réinitialiser l'ensemble du jeu
     public void reinitialiserJeu() {
         reinitialiserGrille();
         reinitialiserDuree();
         reinitialiserTextField();
-
+        effacerHistorique();
         // Assurez-vous que demarrerTemps est réinitialisé à false
         demarrerTemps = false;
         nombreToken = 0;
