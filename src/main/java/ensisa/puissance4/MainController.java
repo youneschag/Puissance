@@ -530,7 +530,6 @@ public class MainController {
         } else {
             // Matches have been played
             Match latestMatch = matchList.get(matchList.size() - 1);
-            String matchResult = latestMatch.getMatchResult(selectedTokenColor);
             MatchHistoryWindow.display(matchList, dernierGagnant);
         }
     }

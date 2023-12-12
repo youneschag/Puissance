@@ -19,7 +19,9 @@ public class MatchHistoryWindow {
         ObservableList<String> items = FXCollections.observableArrayList();
 
         // Add each match result to the ListView
-
+        for (Match match : matchList) {
+            items.add(match.getMatchResult());
+        }
 
         listView.setItems(items);
 

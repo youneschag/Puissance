@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a7a7419-2e5e-4865-9524-9a29bc8098a2" name="Changes" comment="Upgrade">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/Match.java" afterDir="false" />
+    <list default="true" id="5a7a7419-2e5e-4865-9524-9a29bc8098a2" name="Changes" comment="Upgrade logic, working on historic of matches">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/Match.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/Match.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/MatchHistoryWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/MatchHistoryWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/PuissanceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/PuissanceApplication.java" afterDir="false" />
     </list>
@@ -413,7 +413,23 @@
       <option name="project" value="LOCAL" />
       <updated>1701040474622</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Upgrade logic, working on historic of matches">
+      <option name="closed" value="true" />
+      <created>1702389474196</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1702389474196</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Upgrade logic, working on historic of matches">
+      <option name="closed" value="true" />
+      <created>1702389491813</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1702389491813</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -458,7 +474,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Placement des jetons alternants dans la grille" />
     <MESSAGE value="Changement du textfield &quot;Que la partie commence&quot; en &quot;c'est le tour du joueur 1/2&quot; en fonction de qui va jouer" />
     <MESSAGE value="Démarrage du temps quand je mets le premier jeton" />
     <MESSAGE value="Le temps se rénitialise lorqu'on met une nouvelle partie" />
@@ -483,6 +498,7 @@
     <MESSAGE value="Incrementation score" />
     <MESSAGE value="Score fini avec renitialisation réussi" />
     <MESSAGE value="Upgrade" />
-    <option name="LAST_COMMIT_MESSAGE" value="Upgrade" />
+    <MESSAGE value="Upgrade logic, working on historic of matches" />
+    <option name="LAST_COMMIT_MESSAGE" value="Upgrade logic, working on historic of matches" />
   </component>
 </project>
