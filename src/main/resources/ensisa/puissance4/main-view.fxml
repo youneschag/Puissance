@@ -167,7 +167,7 @@
          <!-- Historique à gauche -->
        <StackPane>
            <VBox alignment="BOTTOM_LEFT">
-               <TitledPane animated="false" expanded="false" text="Historique du jeton jaune">
+               <TitledPane animated="false" expanded="false" text="Historique du jeton jaune" maxWidth="300" minWidth="300">
                    <content>
                        <ScrollPane vbarPolicy="ALWAYS" maxHeight="400" >
                            <VBox fx:id="yellowMovesHistory">
@@ -182,7 +182,7 @@
          <!-- Historique à droite -->
        <StackPane>
            <VBox alignment="BOTTOM_RIGHT">
-               <TitledPane animated="false" expanded="false" text="Historique du jeton rouge">
+               <TitledPane animated="false" expanded="false" text="Historique du jeton rouge" maxWidth="300" minWidth="300">
                    <content>
                        <ScrollPane vbarPolicy="ALWAYS" maxHeight="400">
                            <VBox fx:id="redMovesHistory" >

@@ -73,8 +73,8 @@ public class MainController {
     @FXML
     private VBox matchHistoryContainer;
     private String dernierGagnant = "";
-    private int scoreJoueur1 = 0;
-    private int scoreJoueur2 = 0;
+    public static int scoreJoueur1 = 0;
+    public static int scoreJoueur2 = 0;
     @FXML
     private Label scoreLabel;
 
@@ -128,7 +128,7 @@ public class MainController {
                 usernameLabelJoueur1.setText(userInfo.getSecondusername());
                 usernameLabelJoueur2.setText(userInfo.getUsername());
             }
-        };
+        }
         if (timeline != null) {
             timeline.stop(); // Arrêter la timeline si elle est en cours
         }
@@ -141,7 +141,7 @@ public class MainController {
 
     @FXML
     private Label durationLabel;
-    private int secondsElapsed = 0;
+    public static int secondsElapsed = 0;
 
     // Méthode appelée à chaque intervalle de la Timeline pour mettre à jour la durée
     private void updateDuration(ActionEvent event) {
@@ -465,12 +465,16 @@ public class MainController {
         }
     }
 
+    private void effacerHistorique() {
+        yellowMovesHistory.getChildren().clear();
+        redMovesHistory.getChildren().clear();
+    }
     // Méthode pour réinitialiser l'ensemble du jeu
     public void reinitialiserJeu() {
         reinitialiserGrille();
         reinitialiserDuree();
         reinitialiserTextField();
-
+        effacerHistorique();
         // Assurez-vous que demarrerTemps est réinitialisé à false
         demarrerTemps = false;
         nombreToken = 0;

@@ -8,8 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/Match.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/Match.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/MatchHistoryWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/MatchHistoryWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/PuissanceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/PuissanceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ensisa/puissance4/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ensisa/puissance4/main-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -429,7 +428,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702389491813</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Upgrade logic, working on historic of matches">
+      <option name="closed" value="true" />
+      <created>1702390847539</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1702390847539</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
