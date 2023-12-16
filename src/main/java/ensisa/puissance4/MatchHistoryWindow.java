@@ -10,7 +10,7 @@ import java.util.List;
 
 public class MatchHistoryWindow {
 
-    public static void display(List<Match> matchList, String dernierGagnant) {
+    public static void display(List<Match> matchList) {
         Stage window = new Stage();
         window.setTitle("Historique des matchs");
 
@@ -22,13 +22,10 @@ public class MatchHistoryWindow {
         for (Match match : matchList) {
             items.add(match.getMatchResult());
         }
-
         listView.setItems(items);
-
         // Add the ListView to the scene
         Scene scene = new Scene(listView, 400, 300);
         window.setScene(scene);
-
         // Show the window
         window.show();
     }

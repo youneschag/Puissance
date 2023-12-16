@@ -34,7 +34,19 @@
     -fx-text-fill: #FFFFFF;
 }
 
+#scoreLabel {
+    -fx-text-fill: #FFFFFF;
+}
+
 #durationLabel {
+    -fx-text-fill: #FFFFFF;
+}
+
+#usernameLabelJoueur1 {
+     -fx-text-fill: #FFFFFF;
+}
+
+#usernameLabelJoueur2 {
     -fx-text-fill: #FFFFFF;
 }
 

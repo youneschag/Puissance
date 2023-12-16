@@ -22,6 +22,8 @@ import javafx.util.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
+
 import javafx.scene.control.Label;
 
 
@@ -57,8 +59,8 @@ public class MainController {
     private Label usernameLabelJoueur1;
     @FXML
     private Label usernameLabelJoueur2;
-    private String nomJoueur1;
-    private String nomJoueur2;
+    private static String nomJoueur1;
+    private static String nomJoueur2;
     private String selectedGameMode; // Choix du mode de jeu
     private Color selectedTokenColor; // Choix de la couleur du jeton
     private String selectedOrdre;
@@ -67,17 +69,23 @@ public class MainController {
     @FXML
     private GridPane gridPane;
     private Scene scene;
-    private boolean isDarkTheme = false;
     @FXML
     private Circle themeCircle;
-    @FXML
-    private VBox matchHistoryContainer;
-    private String dernierGagnant = "";
+    static String dernierGagnant = "";
     public static int scoreJoueur1 = 0;
     public static int scoreJoueur2 = 0;
     @FXML
     private Label scoreLabel;
-
+    private List<Match> matchList = new ArrayList<>();
+    @FXML
+    private Label durationLabel;
+    public static int secondsElapsed = 0;
+    private int currentGameDuration = 0;
+    @FXML
+    private VBox yellowMovesHistory;
+    @FXML
+    private VBox redMovesHistory;
+    private int nombreToken = 0;
 
     // Méthode pour initialiser les éléments de jeu
     @FXML
@@ -137,12 +145,6 @@ public class MainController {
 
         themeCircle.setOnMouseClicked(this::handleThemeSwitch);
     }
-
-
-    @FXML
-    private Label durationLabel;
-    public static int secondsElapsed = 0;
-
     // Méthode appelée à chaque intervalle de la Timeline pour mettre à jour la durée
     private void updateDuration(ActionEvent event) {
         int minutes = secondsElapsed / 60;
@@ -151,8 +153,8 @@ public class MainController {
 
         // Incrémenter les secondes après la mise à jour de l'affichage
         secondsElapsed++;
+        currentGameDuration++;
     }
-
     @FXML
     private void handleColumnClick(MouseEvent event) {
         if (premierClic) {
@@ -173,13 +175,6 @@ public class MainController {
         // Logique pour placer le jeton dans la colonne columnIndex
         placerJeton(columnIndex);
     }
-
-    @FXML
-    private VBox yellowMovesHistory;
-
-    @FXML
-    private VBox redMovesHistory;
-    private int nombreToken = 0;
 
     public void placerJeton(int columnIndex) {
         // Remove existing circles in the clicked column and store them
@@ -516,28 +511,20 @@ public class MainController {
 
         transition.play();
     }
-
-    private List<Match> getMatchList() {
-        List<Match> matchList = new ArrayList<>();
-        // Get the duration of the match from secondsElapsed
-        int durationInSeconds = secondsElapsed;
-        matchList.add(new Match(nomJoueur1, nomJoueur2, aGagne(), durationInSeconds));
-        return matchList;
+    public void addMatchToHistory() {
+        String joueurPerdant = (dernierGagnant.equals(nomJoueur1)) ? nomJoueur2 : nomJoueur1;
+        // Ajoute le match actuel à la liste globale
+        if (joueurPerdant != null && !dernierGagnant.isEmpty()) {
+            // Ajoute le match actuel à la liste globale
+            matchList.add(0, new Match(dernierGagnant, joueurPerdant, currentGameDuration));
+        }
     }
     @FXML
     private void showMatchHistory(ActionEvent event) {
-        List<Match> matchList = getMatchList();
-
-        if (matchList.isEmpty()) {
-            // No matches played yet
-            showAlerte("Historique des matchs", "Aucun match n'a encore été joué.");
-        } else {
-            // Matches have been played
-            Match latestMatch = matchList.get(matchList.size() - 1);
-            MatchHistoryWindow.display(matchList, dernierGagnant);
-        }
+        // Affiche l'historique des matchs
+        MatchHistoryWindow.display(matchList);
+        currentGameDuration = 0;
     }
-
     private boolean aGagne() {
         // Vérifie les horizontales ( - )
         for (int ligne = 0; ligne < 7; ligne++) {
@@ -655,6 +642,8 @@ public class MainController {
                 });
             }
         });
+        // Maintenant, ajoutez le match à l'historique
+        addMatchToHistory();
     }
     private void incrementerScore() {
         if (nomJoueur1 == dernierGagnant) {
@@ -672,5 +661,13 @@ public class MainController {
 
         // Mettez à jour l'étiquette du score
         scoreLabel.setText("Score: 0:0");
+    }
+    private void handleComputerMove() {
+        // Sélectionnez une colonne aléatoire
+        Random random = new Random();
+        int columnIndex = random.nextInt(7); // Vous pouvez ajuster le nombre de colonnes selon vos besoins
+
+        // Appelez la méthode pour placer le jeton dans la colonne sélectionnée
+        placerJeton(columnIndex);
     }
 }
