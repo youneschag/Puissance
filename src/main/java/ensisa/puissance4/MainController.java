@@ -1,5 +1,6 @@
 package ensisa.puissance4;
 
+import javafx.animation.PauseTransition;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -19,37 +20,12 @@ import javafx.animation.Timeline;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
 
 import javafx.scene.control.Label;
 
 
 public class MainController {
-    @FXML
-    private void handleExitButtonAction(ActionEvent event) {
-        Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
-        confirmationAlert.setTitle("Confirmation");
-        confirmationAlert.setHeaderText(null);
-        confirmationAlert.setContentText("Voulez-vous vraiment quitter l'application?");
-
-        // Ajouter les boutons "Oui" et "Annuler"
-        confirmationAlert.getButtonTypes().setAll(ButtonType.YES, ButtonType.CANCEL);
-
-        // Afficher la boîte de dialogue et attendre la réponse de l'utilisateur
-        Stage stage = (Stage) confirmationAlert.getDialogPane().getScene().getWindow();
-        Optional<ButtonType> result = confirmationAlert.showAndWait();
-
-        // Vérifier la réponse de l'utilisateur
-        if (result.isPresent() && result.get() == ButtonType.YES) {
-            // Si l'utilisateur a cliqué sur "Oui", quitter l'application
-            Platform.exit();
-            System.exit(0);
-        }
-        // Sinon, l'utilisateur a annulé l'action, rien ne se passe
-    }
     private boolean premierClic = true;
     @FXML
     private TextField textField;
@@ -106,18 +82,11 @@ public class MainController {
             selectedTokenColor = ("YELLOW".equals(userInfo.getSelectedToken())) ? Color.YELLOW : Color.RED;
         } else if ("Deuxième".equals(selectedOrdre)) {
             selectedTokenColor = ("YELLOW".equals(userInfo.getSelectedToken())) ? Color.RED : Color.YELLOW;
-        }
-
-        // Vérifier l'ordre de jeu et mettre à jour le texte en conséquence
-        if ("Premier".equals(selectedOrdre)) {
-            textField.setText("C'est le tour de " + userInfo.getUsername());
-        } else if ("Deuxième".equals(selectedOrdre)) {
-            if ("Human vs Human".equals(selectedGameMode)) {
-                textField.setText("C'est le tour de " + userInfo.getSecondusername());
-            } else {
-                textField.setText("C'est le tour du Computer");
+            if ("Human vs Computer".equals(selectedGameMode)) {
+                handleComputerMove();
             }
         }
+
         // Mise à jour du label avec le nom d'utilisateur en fonction du choix du jeton et de l'ordre
         if ("Human vs Computer".equals(selectedGameMode)) {
             if ("YELLOW".equals(userInfo.getSelectedToken())) {
@@ -127,7 +96,8 @@ public class MainController {
                 usernameLabelJoueur1.setText("Computer");
                 usernameLabelJoueur2.setText(userInfo.getUsername());
             }
-        };
+        }
+
         if ("Human vs Human".equals(selectedGameMode)) {
             if ("YELLOW".equals(userInfo.getSelectedToken())) {
                 usernameLabelJoueur1.setText(userInfo.getUsername());
@@ -157,25 +127,40 @@ public class MainController {
     }
     @FXML
     private void handleColumnClick(MouseEvent event) {
-        if (premierClic) {
-            // Réinitialiser le jeu avant de placer le premier jeton
-            reinitialiserJeu();
+        demarrerTemps = true;
 
-            // Initialiser les noms des joueurs
-            nomJoueur1 = usernameLabelJoueur1.getText();
-            nomJoueur2 = usernameLabelJoueur2.getText();
+        // Initialiser les noms des joueurs
+        nomJoueur1 = usernameLabelJoueur1.getText();
+        nomJoueur2 = usernameLabelJoueur2.getText();
 
-            textField.setText("C'est le tour de " + nomJoueur1);
-            premierClic = false;
-            demarrerTemps = true; // Démarrer le temps lorsque le premier jeton est posé
+        if ("Human vs Human".equals(selectedGameMode)) {
+            if (premierClic) {
+                // Réinitialiser le jeu avant de placer le premier jeton
+                reinitialiserJeu();
+
+                textField.setText("C'est le tour de " + nomJoueur1);
+                premierClic = false;
+                demarrerTemps = true;
+            }
         }
-
+        // Logique pour placer le jeton seulement si c'est le tour de l'humain
         Circle clickedCircle = (Circle) event.getSource();
         int columnIndex = GridPane.getColumnIndex(clickedCircle);
-        // Logique pour placer le jeton dans la colonne columnIndex
         placerJeton(columnIndex);
     }
-
+    private void handleComputerMove() {
+        demarrerTemps = true;
+        // Initialiser les noms des joueurs
+        nomJoueur1 = usernameLabelJoueur1.getText();
+        nomJoueur2 = usernameLabelJoueur2.getText();
+        if (("Computer".equals(nomJoueur1)) || ("Computer".equals(nomJoueur2))) {
+            // Sélectionnez une colonne aléatoire
+            Random random = new Random();
+            int columnIndex = random.nextInt(7) + 1;
+            // Placez un jeton dans la colonne sélectionnée
+            placerJeton(columnIndex);
+        }
+    }
     public void placerJeton(int columnIndex) {
         // Remove existing circles in the clicked column and store them
         List<Node> circlesToRemove = supprimerCercles(columnIndex);
@@ -195,7 +180,6 @@ public class MainController {
 
             // Alternating the token color for the next player
             selectedTokenColor = (selectedTokenColor == Color.YELLOW) ? Color.RED : Color.YELLOW;
-
             // Update the text according to the current player
             textField.setText("C'est le tour de " + (selectedTokenColor == Color.YELLOW ? nomJoueur1 : nomJoueur2));
 
@@ -213,16 +197,12 @@ public class MainController {
                 }
                 showAlerte("Egalité !", "Le match a fini par une égalité.");
             }
-
             // Remove the circles that were taken out from the grid, except the one placed at the token position
             circlesToRemove.removeIf(node -> GridPane.getColumnIndex(node) == columnIndex && GridPane.getRowIndex(node) == row);
             gridPane.getChildren().addAll(circlesToRemove);
-
-
             // Déterminer le nom du joueur en fonction de la couleur du jeton
             String playerName = (selectedTokenColor == Color.RED) ? nomJoueur1 : nomJoueur2;
             VBox movesHistory = (selectedTokenColor == Color.RED) ? yellowMovesHistory : redMovesHistory;
-
             // Inverser l'affectation des noms de joueurs si la couleur du jeton est jaune
             if (selectedTokenColor == Color.YELLOW) {
                 playerName = nomJoueur2; // Le joueur jaune est nomJoueur1, donc nomJoueur2 ici
@@ -251,6 +231,10 @@ public class MainController {
                 }
                 dernierGagnant = playerName;
                 showAlerte("Victoire !", "Le joueur " + playerName + " a gagné !");
+            }
+            // Check if it's the computer's turn
+            if (textField.getText().equals("C'est le tour de Computer")) {
+                handleComputerMove();
             }
         }
     }
@@ -318,6 +302,7 @@ public class MainController {
 
     @FXML
     private void handleHumanVsHuman() {
+        reinitialiserScore();
         reinitialiserJeu();
         // Vérifier si le type de jeu a changé
         if (!"Human vs Human".equals(gameTypeTextField.getText())) {
@@ -358,8 +343,8 @@ public class MainController {
             // Si l'utilisateur a saisi des informations, mettez à jour le jeu
             if (firstUsernameResult.isPresent() && couleurResult.isPresent() && ordreResult.isPresent() && secondUsernameResult.isPresent()) {
                 // Mettez à jour le texte et la couleur du jeton en fonction des informations du joueur
-                mettreAJourTypePartie("Human vs Computer");
-                selectedGameMode = "Human vs Computer";
+                mettreAJourTypePartie("Human vs Human");
+                selectedGameMode = "Human vs Human";
                 selectedOrdre = ordreResult.get();
                 selectedTokenColor = couleurResult.get();
 
@@ -394,6 +379,7 @@ public class MainController {
     @FXML
     private void handleHumanVsComputer() {
         reinitialiserJeu();
+        reinitialiserScore();
         // Vérifier si le type de jeu a changé
         if (!"Human vs Computer".equals(gameTypeTextField.getText())) {
             // Si le type de jeu a changé, demander les informations à l'utilisateur
@@ -470,6 +456,7 @@ public class MainController {
         reinitialiserDuree();
         reinitialiserTextField();
         effacerHistorique();
+
         // Assurez-vous que demarrerTemps est réinitialisé à false
         demarrerTemps = false;
         nombreToken = 0;
@@ -489,7 +476,28 @@ public class MainController {
         // Afficher les règles
         ReglesDuJeuPopUp.afficherRegles();
     }
+    @FXML
+    private void handleExitButtonAction(ActionEvent event) {
+        Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmationAlert.setTitle("Confirmation");
+        confirmationAlert.setHeaderText(null);
+        confirmationAlert.setContentText("Voulez-vous vraiment quitter l'application?");
 
+        // Ajouter les boutons "Oui" et "Annuler"
+        confirmationAlert.getButtonTypes().setAll(ButtonType.YES, ButtonType.CANCEL);
+
+        // Afficher la boîte de dialogue et attendre la réponse de l'utilisateur
+        Stage stage = (Stage) confirmationAlert.getDialogPane().getScene().getWindow();
+        Optional<ButtonType> result = confirmationAlert.showAndWait();
+
+        // Vérifier la réponse de l'utilisateur
+        if (result.isPresent() && result.get() == ButtonType.YES) {
+            // Si l'utilisateur a cliqué sur "Oui", quitter l'application
+            Platform.exit();
+            System.exit(0);
+        }
+        // Sinon, l'utilisateur a annulé l'action, rien ne se passe
+    }
     // Méthode pour injecter la scène
     public void setScene(Scene scene) {
         this.scene = scene;
@@ -523,7 +531,6 @@ public class MainController {
     private void showMatchHistory(ActionEvent event) {
         // Affiche l'historique des matchs
         MatchHistoryWindow.display(matchList);
-        currentGameDuration = 0;
     }
     private boolean aGagne() {
         // Vérifie les horizontales ( - )
@@ -594,7 +601,6 @@ public class MainController {
         return false;
     }
 
-
     private boolean memeCouleur(int column, int row, Color targetColor) {
         Node node = getJeton(column, row);
         return node instanceof Jeton && ((Jeton) node).getCouleur() == targetColor;
@@ -644,6 +650,7 @@ public class MainController {
         });
         // Maintenant, ajoutez le match à l'historique
         addMatchToHistory();
+        currentGameDuration = 0;
     }
     private void incrementerScore() {
         if (nomJoueur1 == dernierGagnant) {
@@ -661,13 +668,5 @@ public class MainController {
 
         // Mettez à jour l'étiquette du score
         scoreLabel.setText("Score: 0:0");
-    }
-    private void handleComputerMove() {
-        // Sélectionnez une colonne aléatoire
-        Random random = new Random();
-        int columnIndex = random.nextInt(7); // Vous pouvez ajuster le nombre de colonnes selon vos besoins
-
-        // Appelez la méthode pour placer le jeton dans la colonne sélectionnée
-        placerJeton(columnIndex);
     }
 }
