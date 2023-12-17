@@ -1,5 +1,8 @@
 package ensisa.puissance4;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class Match {
     private String joueur1;
     private String joueur2;
@@ -14,7 +17,15 @@ public class Match {
         if (MainController.scoreJoueur1 == 0 && MainController.scoreJoueur2 == 0) {
             return "Aucun match n'a encore été joué.";
         } else {
-            return joueur1 + " a gagné face à " + joueur2 + " dans une durée de " + duration+ " secondes";
+            // Obtenir la date et l'heure actuelles
+            LocalDateTime now = LocalDateTime.now();
+
+            // Formater la date et l'heure
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy à HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+
+            // Retourner le résultat du match avec la date et l'heure
+            return joueur1 + " a gagné face à " + joueur2 + " dans une durée de " + duration + " secondes,  le " + formattedDateTime;
         }
     }
 }

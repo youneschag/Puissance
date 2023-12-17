@@ -24,7 +24,7 @@ public class MatchHistoryWindow {
         }
         listView.setItems(items);
         // Add the ListView to the scene
-        Scene scene = new Scene(listView, 400, 300);
+        Scene scene = new Scene(listView, 500, 400);
         window.setScene(scene);
         // Show the window
         window.show();

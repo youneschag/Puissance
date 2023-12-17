@@ -2,6 +2,7 @@ package ensisa.puissance4;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.paint.Color;
@@ -53,8 +54,16 @@ public class UserInfoPopUp {
         orderDialog.setContentText("Choisissez l'ordre de jeu :");
         Optional<String> orderResult = orderDialog.showAndWait();
 
+        // Boîte de dialogue pour demander si l'utilisateur veut limiter le temps
+        TextInputDialog timeLimitDialog = new TextInputDialog("0"); // Valeur par défaut, 0 signifie pas de limite
+        timeLimitDialog.setTitle("Limite de temps");
+        timeLimitDialog.setHeaderText(null);
+        timeLimitDialog.setContentText("Entrez la limite de temps en secondes (0 pour pas de limite) :");
+        Optional<String> timeLimitResult = timeLimitDialog.showAndWait();
+        int selectedTimeLimit = Integer.parseInt(timeLimitResult.orElse("0"));
+
         // Retourne les informations de l'utilisateur
-        return new UserInfo(firstusernameResult.orElse(""), tokenResult.orElse(""), gameModeResult.orElse(""),  secondUsername, orderResult.orElse(""));
+        return new UserInfo(firstusernameResult.orElse(""), tokenResult.orElse(""), gameModeResult.orElse(""), secondUsername, orderResult.orElse(""), selectedTimeLimit);
     }
 
     public static void afficherInstructions() {

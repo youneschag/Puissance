@@ -1,6 +1,5 @@
 package ensisa.puissance4;
 
-import javafx.animation.PauseTransition;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -62,7 +61,7 @@ public class MainController {
     @FXML
     private VBox redMovesHistory;
     private int nombreToken = 0;
-
+    private int selectedTimeLimit;
     // Méthode pour initialiser les éléments de jeu
     @FXML
     public void initialiserJeu() {
@@ -76,6 +75,9 @@ public class MainController {
         mettreAJourTypePartie(userInfo.getSelectedGameMode());
         selectedGameMode = userInfo.getSelectedGameMode();
         selectedOrdre = userInfo.getSelectedOrdre();
+
+        // Stockez la limite de temps dans votre MainController
+        selectedTimeLimit = userInfo.getSelectedTimeLimit();
 
         // Déterminer la couleur du premier jeton en fonction du choix de l'utilisateur et de l'ordre de jeu
         if ("Premier".equals(selectedOrdre)) {
@@ -115,16 +117,45 @@ public class MainController {
 
         themeCircle.setOnMouseClicked(this::handleThemeSwitch);
     }
+
     // Méthode appelée à chaque intervalle de la Timeline pour mettre à jour la durée
     private void updateDuration(ActionEvent event) {
         int minutes = secondsElapsed / 60;
         int seconds = secondsElapsed % 60;
-        durationLabel.setText(String.format("Durée: %02d:%02d", minutes, seconds));
+
+        // Vérifier si une limite de temps est définie
+        if (selectedTimeLimit > 0) {
+            // Calculer le temps restant
+            int timeRemaining = selectedTimeLimit - currentGameDuration;
+
+            // Mettre à jour le libellé avec le temps restant
+            durationLabel.setText(String.format("Temps restant: %02d:%02d", timeRemaining / 60, timeRemaining % 60));
+
+            // Vérifier si le temps est écoulé
+            if (timeRemaining <= 0) {
+                // Arrêter le jeu, car la limite de temps est atteinte
+                stopGameDueToTimeLimit();
+                return; // Pour éviter d'incrémenter les secondes après l'arrêt du jeu
+            }
+        } else {
+            // Si aucune limite de temps n'est définie, afficher la durée normale
+            durationLabel.setText(String.format("Durée: %02d:%02d", minutes, seconds));
+        }
 
         // Incrémenter les secondes après la mise à jour de l'affichage
         secondsElapsed++;
         currentGameDuration++;
     }
+
+    private void stopGameDueToTimeLimit() {
+        if (timeline != null) {
+            timeline.stop();
+        }
+        Platform.runLater(() -> {
+            showAlerte("Fin du temps réglementaire", "Le temps imparti est écoulé. La partie se termine avec une égalité.");
+        });
+    }
+
     @FXML
     private void handleColumnClick(MouseEvent event) {
         demarrerTemps = true;
