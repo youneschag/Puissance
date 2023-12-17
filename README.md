@@ -1,11 +1,6 @@
 # Puissance
 Noms dans l'équipe : Chaguer Younes, Maria Ait Bouserhane
 
-Ajuster le compteur de la durée de la partie (voir si même on peut limiter le temps d'une partie et si y a aucun vainqueur d'ici la fin de la durée choisie, draw.
-
-
-
-
 Ajouter bouton Aide dans la toolbar qui va faire apparaitre le guide d'utilisation(premierement affiche des l'execution de l'appli) avec des textfield, pour expliquer le jeu, les regles, comment ajouter les jetons, quand finir la partie, ou chosiir quelle partie souhaitée, et voir l'historique des matches?
 
 
