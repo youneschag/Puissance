@@ -379,7 +379,6 @@ public class MainController {
                 return switch (colorName) {
                     case "YELLOW" -> Color.YELLOW;
                     case "RED" -> Color.RED;
-                    // Add more color cases if needed
                     default -> null; // Handle the case when an invalid color is selected
                 };
             });
@@ -449,7 +448,6 @@ public class MainController {
                 return switch (colorName) {
                     case "YELLOW" -> Color.YELLOW;
                     case "RED" -> Color.RED;
-                    // Add more color cases if needed
                     default -> null; // Handle the case when an invalid color is selected
                 };
             });
