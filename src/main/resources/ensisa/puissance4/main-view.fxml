@@ -35,12 +35,11 @@
                         <!-- Cercle -->
                         <Circle fx:id="themeCircle" fill="white" radius="8.5" styleClass="theme-circle" />
                     </StackPane>
-                    <MenuButton mnemonicParsing="false" text="New Game">
-                        <items>
-                            <MenuItem mnemonicParsing="false" onAction="#handleHumanVsHuman" text="Human vs Human" />
-                            <MenuItem mnemonicParsing="false" onAction="#handleHumanVsComputer" text="Human vs Computer" />
-                        </items>
-                    </MenuButton>
+                    <Label fx:id="durationLabel" text="Durée: 00:00" textAlignment="CENTER">
+                        <font>
+                            <Font name="Arial Bold" size="13.0" />
+                        </font>
+                    </Label>
                     <Label fx:id="scoreLabel" text="Score: 0:0" textAlignment="CENTER">
                         <font>
                             <Font name="Arial Bold" size="13.0" />
@@ -49,11 +48,12 @@
                     <TextField fx:id="textField" editable="false" text="Que la partie commence !" />
                     <Region HBox.hgrow="ALWAYS" />
                     <Region HBox.hgrow="ALWAYS" />
-                    <Label fx:id="durationLabel" text="Durée: 00:00" textAlignment="CENTER">
-                        <font>
-                            <Font name="Arial Bold" size="13.0" />
-                        </font>
-                    </Label>
+                    <MenuButton mnemonicParsing="false" text="New Game">
+                        <items>
+                            <MenuItem mnemonicParsing="false" onAction="#handleHumanVsHuman" text="Human vs Human" />
+                            <MenuItem mnemonicParsing="false" onAction="#handleHumanVsComputer" text="Human vs Computer" />
+                        </items>
+                    </MenuButton>
                     <VBox fx:id="matchHistoryContainer" alignment="CENTER_RIGHT">
                         <Button fx:id="historyButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" onAction="#showMatchHistory" text="Historique des matchs">
                             <font>

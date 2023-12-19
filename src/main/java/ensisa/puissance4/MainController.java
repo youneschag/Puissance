@@ -610,26 +610,23 @@ public class MainController {
         int curCol = oCol;
         int curRow = oLigne;
 
-        while ((curCol >= 0) && (curCol < 8) && (curRow >= 0) && (curRow < 7)) {
+        while (count < 4 && curCol + dCol >= 0 && curCol + dCol < 8 && curRow + dLigne >= 0 && curRow + dLigne < 7) {
+            curCol += dCol;
+            curRow += dLigne;
+
             Jeton jeton = (Jeton) getJeton(curCol, curRow);
+
             if (jeton != null && memeCouleur(curCol, curRow, targetColor)) {
                 // Si la couleur du jeton est celle recherchée, on l'incrémente
                 count++;
-
-                // On sort lorsque le compteur atteint 4
-                if (count >= 4) {
-                    return true;
-                }
             } else {
                 // Si la couleur change ou le jeton est null, on réinitialise le compteur
-                targetColor = jeton == null ? null : jeton.getCouleur();
+                targetColor = (jeton != null) ? jeton.getCouleur() : null;
                 count = 1;
             }
-            // On passe à l'itération suivante
-            curCol += dCol;
-            curRow += dLigne;
         }
-        return false;
+
+        return count >= 4;
     }
 
     private boolean memeCouleur(int column, int row, Color targetColor) {

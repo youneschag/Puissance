@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a7a7419-2e5e-4865-9524-9a29bc8098a2" name="Changes" comment="Human vs Computer fonctionnel">
+    <list default="true" id="5a7a7419-2e5e-4865-9524-9a29bc8098a2" name="Changes" comment="Temps défini et restant fonctionnel">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/Match.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/Match.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/MatchHistoryWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/MatchHistoryWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/UserInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/UserInfoPopUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/UserInfoPopUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ensisa/puissance4/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ensisa/puissance4/main-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -473,7 +470,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702764024195</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Temps défini et restant fonctionnel">
+      <option name="closed" value="true" />
+      <created>1702772291111</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1702772291111</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -518,7 +523,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="AJout des pop up pour definir les joueurs, le type de jeu, et la couleur du jeton" />
     <MESSAGE value="Ajout ordre et alternance des couleurs, il manque juste que le textfield change en gardant les noms des utilisateurs, et que lors de la rénitialistion, l'ordre des utilisateurs ne disparait pas" />
     <MESSAGE value="Alternance complète réussie entre les joueurs dans la grille et textfield" />
     <MESSAGE value="Un peu plus d'interface" />
@@ -543,6 +547,7 @@
     <MESSAGE value="Historique des matches marchent et le dark-theme" />
     <MESSAGE value="Historique des matches marche et le dark-theme" />
     <MESSAGE value="Human vs Computer fonctionnel" />
-    <option name="LAST_COMMIT_MESSAGE" value="Human vs Computer fonctionnel" />
+    <MESSAGE value="Temps défini et restant fonctionnel" />
+    <option name="LAST_COMMIT_MESSAGE" value="Temps défini et restant fonctionnel" />
   </component>
 </project>
