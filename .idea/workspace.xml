@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a7a7419-2e5e-4865-9524-9a29bc8098a2" name="Changes" comment="Creta one dialogue pop up for all the insert informations">
+    <list default="true" id="5a7a7419-2e5e-4865-9524-9a29bc8098a2" name="Changes" comment="pop up  of choices working, working on the similar ones during the app">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/UserInfoPopUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/UserInfoPopUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/ReglesDuJeuPopUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/ReglesDuJeuPopUp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,14 +108,6 @@
       <updated>1699977631578</updated>
       <workItem from="1699977632650" duration="418000" />
       <workItem from="1699979526467" duration="475000" />
-    </task>
-    <task id="LOCAL-00001" summary="first commit">
-      <option name="closed" value="true" />
-      <created>1699977694768</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1699977694768</updated>
     </task>
     <task id="LOCAL-00002" summary="first commit">
       <option name="closed" value="true" />
@@ -501,7 +493,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702975674900</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="pop up  of choices working, working on the similar ones during the app">
+      <option name="closed" value="true" />
+      <created>1702989780646</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1702989780648</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -546,7 +546,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Alignement centrale du type de game" />
     <MESSAGE value="Ajout de pop up de confirmation avant de quitter" />
     <MESSAGE value="Ajout bouton Aide" />
     <MESSAGE value="Ajustement" />
@@ -571,6 +570,7 @@
     <MESSAGE value="Limite temps et changement de label (New Game, Durée):" />
     <MESSAGE value="Transition token works" />
     <MESSAGE value="Creta one dialogue pop up for all the insert informations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creta one dialogue pop up for all the insert informations" />
+    <MESSAGE value="pop up  of choices working, working on the similar ones during the app" />
+    <option name="LAST_COMMIT_MESSAGE" value="pop up  of choices working, working on the similar ones during the app" />
   </component>
 </project>
