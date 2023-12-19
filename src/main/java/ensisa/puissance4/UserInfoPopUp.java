@@ -1,11 +1,8 @@
 package ensisa.puissance4;
 
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ChoiceDialog;
-import javafx.scene.control.TextInputDialog;
-import javafx.scene.paint.Color;
+import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
+import javafx.util.Callback;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,65 +10,99 @@ import java.util.Optional;
 public class UserInfoPopUp {
 
     public static UserInfo obtenirInfosUtilisateur() {
-        // Afficher une boîte de dialogue pour le nom d'utilisateur
-        TextInputDialog firstusernameDialog = new TextInputDialog();
-        firstusernameDialog.setTitle("Nom d'utilisateur");
-        firstusernameDialog.setHeaderText(null);
-        firstusernameDialog.setContentText("Entrez votre nom d'utilisateur :");
-        Optional<String> firstusernameResult = firstusernameDialog.showAndWait();
+        // Créer une GridPane pour organiser les champs
+        GridPane gridPane = new GridPane();
+        gridPane.setHgap(10);
+        gridPane.setVgap(10);
 
-        // Afficher une boîte de dialogue pour le choix du jeton
-        List<String> choices = List.of("YELLOW", "RED"); // Ajoutez d'autres choix au besoin
-        ChoiceDialog<String> tokenDialog = new ChoiceDialog<>(choices.get(0), choices);
-        tokenDialog.setTitle("Choix du jeton");
-        tokenDialog.setHeaderText(null);
-        tokenDialog.setContentText("Choisissez votre jeton :");
-        Optional<String> tokenResult = tokenDialog.showAndWait();
+        // Ajouter le champ pour le nom d'utilisateur
+        TextField usernameField = new TextField();
+        gridPane.add(new Label("Nom d'utilisateur:"), 0, 0);
+        gridPane.add(usernameField, 1, 0);
 
-        // Afficher une boîte de dialogue pour le choix du mode de jeu
-        List<String> gameModes = List.of("Human vs Human", "Human vs Computer"); // Ajoutez d'autres modes au besoin
-        ChoiceDialog<String> gameModeDialog = new ChoiceDialog<>(gameModes.get(0), gameModes);
-        gameModeDialog.setTitle("Mode de jeu");
-        gameModeDialog.setHeaderText(null);
-        gameModeDialog.setContentText("Choisissez le mode de jeu :");
-        Optional<String> gameModeResult = gameModeDialog.showAndWait();
+        // Ajouter le champ pour le choix du jeton
+        List<String> choices = List.of("YELLOW", "RED");
+        ChoiceBox<String> tokenChoice = new ChoiceBox<>();
+        tokenChoice.getItems().addAll(choices);
+        tokenChoice.setValue(choices.get(0));
+        gridPane.add(new Label("Choix du jeton:"), 0, 1);
+        gridPane.add(tokenChoice, 1, 1);
 
-        // Si le mode de jeu est "Human vs Human", demandez le nom du deuxième utilisateur
-        String secondUsername = "";
-        if ("Human vs Human".equals(gameModeResult.orElse(""))) {
-            TextInputDialog secondUsernameDialog = new TextInputDialog();
-            secondUsernameDialog.setTitle("Nom d'utilisateur du deuxième joueur ");
-            secondUsernameDialog.setHeaderText(null);
-            secondUsernameDialog.setContentText("Entrez le nom d'utilisateur du deuxième joueur :");
-            Optional<String> secondUsernameResult = secondUsernameDialog.showAndWait();
-            secondUsername = secondUsernameResult.orElse("");
-        }
-        // Boîte de dialogue pour demander l'ordre de jeu
-        List<String> orderChoices = List.of("Premier", "Deuxième"); // Ajoutez d'autres choix au besoin
-        ChoiceDialog<String> orderDialog = new ChoiceDialog<>(orderChoices.get(0), orderChoices);
-        orderDialog.setTitle("Ordre de jeu");
-        orderDialog.setHeaderText(null);
-        orderDialog.setContentText("Choisissez l'ordre de jeu :");
-        Optional<String> orderResult = orderDialog.showAndWait();
+        // Ajouter le champ pour le choix du mode de jeu
+        List<String> gameModes = List.of("Human vs Human", "Human vs Computer");
+        ChoiceBox<String> gameModeChoice = new ChoiceBox<>();
+        gameModeChoice.getItems().addAll(gameModes);
+        gameModeChoice.setValue(gameModes.get(0));
+        gridPane.add(new Label("Mode de jeu:"), 0, 2);
+        gridPane.add(gameModeChoice, 1, 2);
 
-        // Boîte de dialogue pour demander si l'utilisateur veut limiter le temps
-        TextInputDialog timeLimitDialog = new TextInputDialog("0"); // Valeur par défaut, 0 signifie pas de limite
-        timeLimitDialog.setTitle("Limite de temps");
-        timeLimitDialog.setHeaderText(null);
-        timeLimitDialog.setContentText("Entrez la limite de temps en secondes (0 pour pas de limite) :");
-        Optional<String> timeLimitResult = timeLimitDialog.showAndWait();
-        int selectedTimeLimit = Integer.parseInt(timeLimitResult.orElse("0"));
+        // Ajouter le champ pour l'ordre de jeu
+        List<String> orderChoices = List.of("Premier", "Deuxième");
+        ChoiceBox<String> orderChoice = new ChoiceBox<>();
+        orderChoice.getItems().addAll(orderChoices);
+        orderChoice.setValue(orderChoices.get(0));
+        gridPane.add(new Label("Ordre de jeu:"), 0, 3);
+        gridPane.add(orderChoice, 1, 3);
 
-        // Retourne les informations de l'utilisateur
-        return new UserInfo(firstusernameResult.orElse(""), tokenResult.orElse(""), gameModeResult.orElse(""), secondUsername, orderResult.orElse(""), selectedTimeLimit);
+        // Ajouter le champ pour la limite de temps
+        TextField timeLimitField = new TextField("0");
+        int timeLimit = Integer.parseInt(timeLimitField.getText());
+        gridPane.add(new Label("Limite de temps en secondes (0 : pas de limite):"), 0, 4);
+        gridPane.add(timeLimitField, 1, 4);
+
+        // Ajouter le champ pour le deuxième utilisateur (visible seulement si "Human vs Human" est sélectionné)
+        TextField secondUsernameField = new TextField();
+        secondUsernameField.setVisible(false);
+        gridPane.add(new Label("Nom d'utilisateur du deuxième joueur:"), 0, 5);
+        gridPane.add(secondUsernameField, 1, 5);
+
+        // Écouter les changements dans le choix du mode de jeu
+        gameModeChoice.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            secondUsernameField.setVisible("Human vs Human".equals(newValue));
+        });
+
+        // Boîte de dialogue principale
+        Dialog<UserInfo> dialog = new Dialog<>();
+        dialog.setTitle("Informations de l'utilisateur");
+        dialog.setHeaderText(null);
+        dialog.getDialogPane().setContent(gridPane);
+
+        // Ajouter les boutons OK et Annuler
+        ButtonType okButtonType = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(okButtonType, ButtonType.CANCEL);
+
+        // Configurer la conversion des résultats
+        dialog.setResultConverter(new Callback<ButtonType, UserInfo>() {
+            @Override
+            public UserInfo call(ButtonType buttonType) {
+                if (buttonType == okButtonType) {
+                    return new UserInfo(
+                            usernameField.getText(),
+                            tokenChoice.getValue(),
+                            gameModeChoice.getValue(),
+                            secondUsernameField.getText(),
+                            orderChoice.getValue(),
+                            timeLimit
+                    );
+                }
+                return null;
+            }
+        });
+
+        // Afficher la boîte de dialogue et récupérer les résultats
+        Optional<UserInfo> result = dialog.showAndWait();
+
+        // Retourner les informations de l'utilisateur si elles sont présentes
+        return result.orElse(null);
     }
 
     public static void afficherInstructions() {
         // Afficher les instructions
-        Alert alert = new Alert(AlertType.INFORMATION);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Instructions du jeu");
         alert.setHeaderText(null);
         alert.setContentText("Insérez ici les instructions du jeu.");
         alert.showAndWait();
     }
 }
+
