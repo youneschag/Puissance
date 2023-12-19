@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a7a7419-2e5e-4865-9524-9a29bc8098a2" name="Changes" comment="Transition token works">
+    <list default="true" id="5a7a7419-2e5e-4865-9524-9a29bc8098a2" name="Changes" comment="Creta one dialogue pop up for all the insert informations">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/UserInfoPopUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ensisa/puissance4/UserInfoPopUp.java" afterDir="false" />
     </list>
@@ -493,7 +493,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702973874854</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Creta one dialogue pop up for all the insert informations">
+      <option name="closed" value="true" />
+      <created>1702975674900</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1702975674900</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -538,7 +546,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Un peu plus d'interface" />
     <MESSAGE value="Alignement centrale du type de game" />
     <MESSAGE value="Ajout de pop up de confirmation avant de quitter" />
     <MESSAGE value="Ajout bouton Aide" />
@@ -563,6 +570,7 @@
     <MESSAGE value="Temps défini et restant fonctionnel" />
     <MESSAGE value="Limite temps et changement de label (New Game, Durée):" />
     <MESSAGE value="Transition token works" />
-    <option name="LAST_COMMIT_MESSAGE" value="Transition token works" />
+    <MESSAGE value="Creta one dialogue pop up for all the insert informations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creta one dialogue pop up for all the insert informations" />
   </component>
 </project>
