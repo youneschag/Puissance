@@ -1,7 +1,7 @@
 # Puissance
 Noms dans l'équipe : Chaguer Younes, Maria Ait Bouserhane
 
-Ajouter bouton Aide dans la toolbar qui va faire apparaitre le guide d'utilisation(premierement affiche des l'execution de l'appli) avec des textfield, pour expliquer le jeu, les regles, comment ajouter les jetons, quand finir la partie, ou chosiir quelle partie souhaitée, et voir l'historique des matches?
+A faire durant la séance TD (avec un code plus propre : commentaire + sub classes ) : Ajouter bouton Aide dans la toolbar qui va faire apparaitre le guide d'utilisation(premierement affiche des l'execution de l'appli) avec des textfield, pour expliquer le jeu, les regles, comment ajouter les jetons, quand finir la partie, ou chosiir quelle partie souhaitée, et voir l'historique des matches?
 
 
 
