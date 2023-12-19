@@ -203,13 +203,26 @@ public class MainController {
             // Place the token on the grid with the current color
             Jeton token = new Jeton(25, selectedTokenColor);
             GridPane.setColumnIndex(token, columnIndex);
-            GridPane.setRowIndex(token, row);
+            GridPane.setRowIndex(token, row); // Initial position (above the grid)
             GridPane.setHalignment(token, HPos.CENTER);
             GridPane.setValignment(token, VPos.CENTER);
             gridPane.getChildren().add(token);
             nombreToken++;
 
-            // Alternating the token color for the next player
+            // Calculate the initial Y position based on the number of tokens in the column
+            double initialY = -350;
+
+            // Create a TranslateTransition for the token
+            TranslateTransition transition = new TranslateTransition(Duration.seconds(1), token);
+
+            // Set the initial and target Y coordinates for the transition
+            transition.setFromY(initialY);
+            transition.setToY(row * -0.01);
+
+            // Play the transition
+            transition.play();
+
+        // Alternating the token color for the next player
             selectedTokenColor = (selectedTokenColor == Color.YELLOW) ? Color.RED : Color.YELLOW;
             // Update the text according to the current player
             textField.setText("C'est le tour de " + (selectedTokenColor == Color.YELLOW ? nomJoueur1 : nomJoueur2));
